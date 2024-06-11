@@ -1,0 +1,1 @@
+console.log("Este es el archivo controlador, donde ira toda la logica del negogio")
