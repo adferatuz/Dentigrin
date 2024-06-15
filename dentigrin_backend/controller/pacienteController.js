@@ -1,4 +1,5 @@
 const Paciente = require('../models/paciente');
+const datosPrueba = require('../test/documentosPruebas')
 
 //Obtener todos los pacientes
 exports.getPacientes = async (req, res) => {
@@ -28,7 +29,8 @@ exports.getPacienteById = async (req, res) => {
   // Crear un nuevo paciente
   exports.createPaciente = async (req, res) => {
     try {
-      const nuevoPaciente = await Paciente.create(req.body);
+      //const nuevoPaciente = await Paciente.create(req.body);
+      const nuevoPaciente = await Paciente.create(datosPrueba);
       res.status(201).json(nuevoPaciente);
     } catch (error) {
       res.status(400).json({ message: error.message });

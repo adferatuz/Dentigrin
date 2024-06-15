@@ -1,6 +1,7 @@
 const datosPrueba = {
-    name :'cristhian',
-    email : 'ejemplo2@ejemplo.com'
+    nombre :'cristhian',
+    apellido : 'guzman',
+    edad: 32
   }
 
   module.exports = datosPrueba;
