@@ -1,15 +1,24 @@
-// app.js
 const express = require('express');
 const app = express();
 
-const routes = require('./routes/routes');
+const sequelize = require('./db/db');
+const routesPacientes = require('./routes/routesPacientes');
+const routeServer = require('./server/server')
 
-app.use('/', routes);
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('¡Hola, mundo! hola chinas como les va????😎👌');
-});
+app.use('/', routeServer);
+app.use('/', routesPacientes);
 
-app.listen(3000, () => {
-  console.log('Servidor escuchando en el puerto 3000');
-});
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log("Base de datos sincronizada");
+    app.listen(3000, () => {
+      console.log('Servidor escuchando en el puerto 3000');
+    });
+  })
+  .catch(err => {
+    console.log('Error al sincronizar la base de datos: ', err);
+  });
+
+
