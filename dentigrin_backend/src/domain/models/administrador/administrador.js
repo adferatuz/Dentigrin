@@ -1,26 +1,27 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const sequelize = require('@config/db');
 
-const Paciente = sequelize.define('Paciente', {
-    id: {
+const Administrador = sequelize.define('Administrador', {
+    id_administrador: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: {
+    nombres: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    apellido: {
+    apellidos: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    edad: {
-        type:DataTypes.INTEGER,
+    numero_contacto: {
+        type: DataTypes.STRING,
         allowNull: false
-    }
+    }    
+
 },{
-    tableName: 'pacientes'
+    tableName: 'administradores'
 })
 
-module.exports = Paciente;
+module.exports = Administrador;

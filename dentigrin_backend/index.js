@@ -1,14 +1,21 @@
+require('module-alias/register')
+
 const express = require('express');
 const app = express();
-
-const sequelize = require('./config/db');
-const routesPacientes = require('./routes/routesPacientes');
-const routeServer = require('./server/server')
+const sequelize = require('@config/db');
+const routesPacientes = require('@routes/routesPacientes');
+const routesOdontologos = require('@routes/routesOdontologos');
+const routesAdministrador = require('@routes/routesAdministrador')
+const routeServer = require('@routes/routesServer');
+const routeHistoriaClinica = require('@routes/routesHistoriaClinica');
 
 app.use(express.json());
 
 app.use('/', routeServer);
 app.use('/', routesPacientes);
+app.use('/', routesOdontologos);
+app.use('/', routesAdministrador);
+app.use('/', routeHistoriaClinica);
 
 sequelize.authenticate()
   .then(() => {

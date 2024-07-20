@@ -1,5 +1,5 @@
-const Paciente = require('../models/paciente');
-const datosPrueba = require('../test/documentosPruebas')
+const Paciente = require('@models/paciente/paciente');
+const datosPrueba = require('@test/documentosPruebas')
 
 //Obtener todos los pacientes
 exports.getPacientes = async (req, res) => {

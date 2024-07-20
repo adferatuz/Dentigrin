@@ -1,0 +1,61 @@
+body { 
+    margin: 0px;
+}
+
+nav {
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+
+.Logo{
+  display: flex;  
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.enlaces {
+    list-style: none; /* Quita las viñetas */
+    display: flex;
+    gap: 20px; /* Espacio entre los elementos */
+    padding: 0;
+    margin: 0;
+  }
+
+.enlaces li a {
+    text-decoration: none; /* Quita la subrayado predeterminado */
+    color: #000; /* Color inicial del texto */
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el color */
+  }
+
+.enlaces li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000; /* Color de la línea */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+
+  .enlaces li a:hover {
+    color: #007BFF; /* Color del texto al pasar el cursor */
+  }
+  
+  .enlaces li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+img {
+    width: 80px;
+ }
+

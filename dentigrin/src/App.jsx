@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import Layout from './components/layout/layout'
+
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>Esta es la aplicacion dentigrin</h1>
+      <Layout></Layout>           
     </>
   )
 }
