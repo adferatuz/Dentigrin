@@ -1,6 +1,6 @@
 <h1 align = "center"> Dentigrin</h1>
 <p align="center">
-  <img src="../Dentigrin/dentigrin/src/assets/images/Logo Dentigrin.jpeg" alt="Foro Hub" width="50%">
+  <img src="./dentigrin/src/assets/images/Logo Dentigrin.jpeg" alt="Foro Hub" width="50%">
 </p>
 Este es un proyecto para la odontologia odontoTimbío de tipo proyecto estudiantil del SENA
 
