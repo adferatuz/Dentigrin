@@ -8,6 +8,7 @@ const routesOdontologos = require('@routes/routesOdontologos');
 const routesAdministrador = require('@routes/routesAdministrador')
 const routeServer = require('@routes/routesServer');
 const routeHistoriaClinica = require('@routes/routesHistoriaClinica');
+const routerAuth = require('@routes/routesAuth');
 
 app.use(express.json());
 
@@ -16,6 +17,7 @@ app.use('/', routesPacientes);
 app.use('/', routesOdontologos);
 app.use('/', routesAdministrador);
 app.use('/', routeHistoriaClinica);
+app.use('/', routerAuth);
 
 sequelize.authenticate()
   .then(() => {
