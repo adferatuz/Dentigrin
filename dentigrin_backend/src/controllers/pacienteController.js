@@ -58,7 +58,7 @@ exports.getPacienteById = async (req, res) => {
   exports.deletePaciente = async (req, res) => {
     try {
       const deleted = await Paciente.destroy({
-        where: { id: req.params.id }
+        where: { id_paciente: req.params.id }
       });
       if (deleted) {
         res.status(204).json({ message: 'Paciente eliminado' });
