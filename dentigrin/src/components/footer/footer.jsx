@@ -2,9 +2,6 @@ import './styles.css'
 
 export default function Footer (){
     return(
-        <>
-            <footer></footer>
-            
-        </>
+            <div className="footer"></div>         
     )
 }

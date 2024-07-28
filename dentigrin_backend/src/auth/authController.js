@@ -2,6 +2,8 @@ const User = require('@models/usuario/user');
 
 exports.createUser = async(req, res) => {
     try {
+
+      
         res.status(201).json({user: 'esta respondiendo correctamente registrando'});
       } catch (error) {
         res.status(400).json({ message: error.message });

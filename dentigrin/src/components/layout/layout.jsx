@@ -1,12 +1,14 @@
-import Footer from "../footer/footer";
-import Navbar from "../header/navbar";
+import './style.css';
 
-
-export default function Layout (){
+export default function Layout ({children}){
+   
     return(
         <>
-            <Navbar />
-            <Footer/>
+            <section className="layout">
+                <div className="main">
+                    {children}
+                </div>                
+            </section>
         
         </>
     )

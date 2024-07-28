@@ -1,8 +1,23 @@
-footer{
-    background-color: rgb(247, 0, 255);
-height: 50px;
-position: fixed;
-width: 100%;
-bottom: 0;
-padding: 1rem;
+.footer {
+    background-color: #30c6ab; /* Color más suave */
+    color: #333; /* Texto de color oscuro para contraste */
+    height: 60px; /* Un poco más alto para mejor estética */    
+    width: 100%;    
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif; /* Fuente más legible */
+    font-size: 14px; /* Tamaño de fuente legible */
+    border-radius: 3px;
+    box-sizing: border-box;
 }
+
+@media (max-width: 600px) {
+    .footer {
+        font-size: 12px; /* Fuente más pequeña en pantallas pequeñas */
+        padding: 15px 10px; /* Más padding para clicabilidad en pantallas táctiles */
+    }
+}
+
