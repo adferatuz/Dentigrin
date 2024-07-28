@@ -1,5 +1,5 @@
 .layout {
-    height: 100vh;
+    height: 80vh;
     width: 100%;
   
     display: grid;
@@ -9,28 +9,16 @@
     grid-template-columns: 1fr;
     gap: 8px;
     text-align: center;
-    padding: 6px;
+    padding: 6px 0px;
     box-sizing: border-box;
   }
   
   .main { grid-area: main; }
 
-@media (max-width: 1366px) {
-  .layout {
-      padding: 8px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .layout {
-      padding: 4px;
-  }
-}
 
 @media (max-width: 768px) {
   .layout {
       grid-template-rows: auto;
-      padding: 2px;
   }
 }
   
