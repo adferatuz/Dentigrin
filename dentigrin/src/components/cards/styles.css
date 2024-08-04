@@ -1,0 +1,33 @@
+.card {    
+    overflow: hidden; /* Oculta contenido desbordado */
+    margin: 16px; /* Espacio alrededor */
+    background-color: #fff; /* Fondo blanco */
+    transition: transform 0.3s; /* Suave animación al pasar el ratón */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Levantar ligeramente la tarjeta al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.img-card {
+    width: 100%; /* Imagen ocupa todo el ancho */
+    height: auto; /* Mantiene la proporción */
+}
+
+.title-card {
+    font-size: 1.5em; /* Tamaño del título */
+    margin: 16px 0; /* Espacio arriba y abajo */
+    color: #333; /* Color del texto */
+    text-align: center;
+}
+
+.description-card {
+    font-size: 1em; /* Tamaño del texto del párrafo */
+    color: #666; /* Color gris */
+    padding: 8px ; /* Espacio dentro del contenedor */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+}
+

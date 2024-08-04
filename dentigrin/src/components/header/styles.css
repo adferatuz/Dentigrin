@@ -57,7 +57,8 @@
 
   /* Estilos para el enlace activo */
 .enlaces li a.active {
-  color: #075951; /* Opcional: cambia el color del enlace activo */  
+  color: #075951; /* Opcional: cambia el color del enlace activo */
+  pointer-events: none;  
 }
 
 .image_logo {

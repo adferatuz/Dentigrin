@@ -26,7 +26,9 @@ export default function Navbar () {
                     className={`burger ${isActive ? "burger--active" : ""}`}
                     onClick={handleToggleClick}
                 >
-                    <span></span><span></span><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </label>                         
                 <nav className={`navbar ${isActive ? "nav--active" : ""}`}>                        
                     <div className="Logo">
