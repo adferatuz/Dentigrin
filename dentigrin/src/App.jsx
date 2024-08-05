@@ -3,6 +3,7 @@ import Layout from './components/layout/layout'
 import Navbar from './components/header/navbar'
 import Footer from './components/footer/footer'
 import Enrutamiento from './router/enrutamiento'
+import Button from './components/button/button'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +12,7 @@ function App() {
     <>
         <Navbar/>
         <Layout>
-          <Enrutamiento/>          
+          <Enrutamiento/>       
         </Layout>
         <Footer/>         
     </>             
