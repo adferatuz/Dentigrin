@@ -12,7 +12,62 @@
     font-size: 14px; /* Tamaño de fuente legible */
     border-radius: 3px;
     box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
 }
+
+
+
+.footer .footer-info:nth-child(2){
+   gap: 20px;
+   
+}
+
+.footer div:nth-child(2) p:hover{
+    color: #0f54e8;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.footer-info{
+    display: flex;
+    gap: 8px;
+}
+
+.footer-info p{
+    font-size: 10px;
+    color: #fff;
+}
+
+.footer-info p:first-child{
+    margin-left: 10px;
+
+}
+
+.footer-icons{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-right: 10px;
+}
+
+.icon{
+    width: 20px;
+}
+
+.icon img{
+    width: 100%;
+    filter: invert(100%) brightness(100%);
+    transition: all 0.4s ease-out;
+}
+
+.icon img:hover{
+    transform: scale(1.3);
+    transition: all 0.4s ease;
+}
+
+
 
 @media (max-width: 600px) {
     .footer {
