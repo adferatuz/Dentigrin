@@ -41,7 +41,7 @@ exports.getPacienteById = async (req, res) => {
   exports.updatePaciente = async (req, res) => {
     try {
       const [updated] = await Paciente.update(req.body, {
-        where: { id: req.params.id }
+        where: { id_paciente: req.params.id }
       });
       if (updated) {
         const updatedPaciente = await Paciente.findByPk(req.params.id);

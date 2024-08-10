@@ -1,8 +1,54 @@
-# React + Vite
+<h1 align = "center"> Dentigrin Front-end (Cliente)</h1>
+<p align = "center">
+    Dentigrin es una plataforma para la gestión de citas y la administración de una clínica odontológica. Este proyecto se desarrolla en la parte del front-end (cliente) con React.js y Vite.
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tabla de Contenido
 
-Currently, two official plugins are available:
+1. [Introducción](#introducción)
+2. [Características](#características)
+3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Introducción
+
+Dentigrin es una solución integral para la administración de clínicas odontológicas, permitiendo la gestión eficiente de citas, pacientes, y expedientes médicos.
+
+## Características
+
+- Gestión de citas
+- Administración de pacientes
+- Creación y actualización de expedientes médicos
+- Panel de control para administradores
+- Interfaz intuitiva y fácil de usar
+
+## Tecnologías Utilizadas
+
+- **Front-End:** React.js, Vite, Tailwind CSS
+
+- <h3>Dependencias generales del proyecto:</h3>
+
+    <h4>Dependencias de producción:</h4>
+    ✨ "react": "^18.2.0"</br>
+    ✨ "react-dom": "^18.2.0"</br>
+    ✨ "react-router-dom": "^6.25.1"
+        
+
+    <h4>Dependencias de desarrollo:</h4>
+    ✨ "@types/react": "^18.2.66"</br>
+    ✨ "@types/react-dom": "^18.2.22"</br>
+    ✨ "@vitejs/plugin-react": "^4.2.1"</br>
+    ✨ "eslint": "^8.57.0"</br>
+    ✨ "eslint-plugin-react": "^7.34.1"</br>
+    ✨ "eslint-plugin-react-hooks": "^4.6.0"</br>
+    ✨ "eslint-plugin-react-refresh": "^0.4.6"</br>
+    ✨ "vite": "^5.2.0"</br>
+
+
+
+
+## Requisitos Previos
+
+- Node.js
+- npm 
+- PostgreSQL
