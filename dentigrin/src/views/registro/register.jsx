@@ -1,6 +1,6 @@
 import './styles.css'
 
-export default function Register(props) {
+export default function Register() {
     return (
         <div className="form-container">
             <form>
