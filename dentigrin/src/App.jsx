@@ -11,9 +11,9 @@ function App() {
     <>
         <Navbar/>
         <Layout>
-          <Enrutamiento/>     
+          <Enrutamiento/>    
+          <Footer/>         
         </Layout>
-        <Footer/>         
     </>             
     
   )

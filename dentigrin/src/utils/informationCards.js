@@ -1,7 +1,7 @@
 import imgService1 from '../assets/images/Imagen-1-Servicio.jpeg'
 import imgService2 from '../assets/images/Imagen-2-Servicios.jpeg'
 import imgService3 from '../assets/images/Imagen-3-Servicios.jpeg'
-import imgService4 from '../assets/images/endodoncia.jpg'
+import imgService4 from '../assets/images/endodoncia.jpeg'
 
 export const informationCard =[
     {
@@ -23,7 +23,7 @@ export const informationCard =[
         'description':'Nuestros expertos realizan extracciones dentales de manera segura y cómoda. Resolvemos problemas de muelas, dientes dañados o impactados.'
     },
     {
-        'src' : imgService3,
+        'src' : imgService4,
         'alt' : 'Doctora extrayendo un diente',
         'title' : 'Endodoncia',
         'description':'Ofrecemos tratamientos de endodoncia para salvar dientes dañados o infectados. Nuestros especialistas te brindaran un tratamiento efectivo'
