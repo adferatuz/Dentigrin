@@ -1,0 +1,87 @@
+.container-form article{
+    width: 500px;
+    text-align: center;
+    
+}
+
+.container-form article h2{
+    font-size: 2em;
+    letter-spacing: 2px;
+    margin-top: 0;
+}
+
+
+.body-form{
+    width: 100%;
+    box-shadow: -0.4px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+}
+
+.body-form span{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+.body-form span:hover{   
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.body-form span:hover{
+    color: #0f54e8;
+    font-weight: bold;
+    transform: scale(1.1);  
+}
+
+.body-form form{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2.5em;
+}
+.body-form form input{
+    width: 95%;
+    height: 2.5em;
+    border: 0.2px solid #00000044;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 15px;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;   
+}
+
+.body-form form label{
+    font-size: 1.5em;
+}
+
+.body-form form div{
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.body-form form div p{    
+    transition: all 0.3s ease-in;
+    cursor:pointer;
+}
+.body-form form div p:hover{
+    color: #0f54e8;
+}
+
+.container-link-login p:first-child{
+    pointer-events: none;
+    margin-right: 8px;
+}
+
+.container-link-login p:first-child:hover{
+    color: #000;
+}
+
+.btn--position{
+    position: absolute;
+    left: 68%;
+}
