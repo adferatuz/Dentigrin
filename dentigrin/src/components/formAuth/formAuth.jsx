@@ -17,23 +17,29 @@ export default function FormAuth ({provideClass,showLink, title}) {
                 <section className='body-form'>
                     <span>X</span>
                     <form action="">
-                        <label title='Username' htmlFor="username">Nombre de Usuario</label>
+                        <label htmlFor="username" title='Username' >Nombre de Usuario</label>
                         <input 
                             type="text" 
+                            id='username'
+                            name='username' 
+                            autoComplete="username"
                             placeholder='Ingrese el nombre de Usuario' 
-                            id='username' 
                         />
-                        <label title='email' htmlFor="email">Correo electronico</label>
+                        <label htmlFor="email" title='email'>Correo electronico</label>
                         <input 
                             type="email"
+                            id='email'
+                            name='email' 
+                            autoComplete="email"
                             placeholder='Ingrese el correo electronico' 
-                            id='email' 
                         />
-                        <label title='password' htmlFor="password">Contraseña</label>
+                        <label htmlFor="password" title='password' >Contraseña</label>
                         <input 
                             type="password"
+                            id='password'
+                            name='password' 
+                            autoComplete="current-password"
                             placeholder='Ingrese la contraseña' 
-                            id='password' 
                         />
                         <div>
                             {
