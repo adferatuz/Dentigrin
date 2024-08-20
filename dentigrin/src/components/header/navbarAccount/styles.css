@@ -1,0 +1,180 @@
+.navbar {
+    background-color: #30c6ab;
+    color: #333;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.Logo{
+  display: flex;  
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.container-enlaces_navbarAccount{
+  width: 83%;
+}
+
+.enlaces-navbarAccount {
+    list-style: none; /* Quita las viñetas */
+    display: flex;
+    gap: 40px; /* Espacio entre los elementos */
+    padding: 0;
+    margin: 0;
+    
+  }
+
+.enlaces-navbarAccount li a {
+    text-decoration: none; /* Quita la subrayado predeterminado */
+    color: #000; /* Color inicial del texto */
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el color */
+  }
+
+
+.enlaces-navbarAccount li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000; /* Color de la línea */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }  
+  
+  .enlaces-navbarAccount li a:hover::after,
+  .enlaces-navbarAccount li a.active::after  {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* Estilos para el enlace activo */
+.enlaces-navbarAccount li a.active {
+  color: #075951; /* Opcional: cambia el color del enlace activo */
+  pointer-events: none;  
+}
+
+.image_logo {
+    width: 50px;
+    border-radius: 3px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+ }
+
+ .burger {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: none;
+  margin-bottom: 7px;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #30c6ab;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+.burger--active > span:nth-of-type(1) {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+
+.burger--active > span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger--active > span:nth-of-type(3) {
+  transform: rotate(-45deg);
+  top: 28px;
+  left: 5px;
+}
+
+@media screen and (max-width: 548px) {
+  .enlaces { 
+    flex-direction: column;   
+    align-items: flex-start;
+  }
+  .burger {
+    display: block;
+  }
+
+  .navbar {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: all 1s ease;
+    background-color: #fff;    
+    z-index: -1;
+    border-top: none;
+    font-size: 20px;
+  }
+  .header{
+    background-color: #fff;
+  }
+
+  .nav--active {
+    pointer-events: auto;
+    height: 30vh;
+    transition: all 1s ease;
+    background-color: #30c6ab;    
+    z-index: 1;
+  }
+
+  .Logo{
+    position: absolute;
+    right: 50%;
+  }
+
+  .image_logo {
+    position: absolute;
+    right: 60%;
+    width: 200px;    
+ }
+ .invisible{
+  z-index: -2;
+ }
+}

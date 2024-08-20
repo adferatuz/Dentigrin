@@ -1,11 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Button from '../button/button.jsx'
 import './styles.css'
+import { useLocation } from 'react-router-dom';
 
-export default function FormAuth ({provideClass,showLink, title}) {
+export default function FormAuth ({handleSesionClick,showLink, title}) {
 
     const [isActive, setIsActive] = useState(true)
-    useEffect(()=>{setIsActive(showLink)},[])
+    const formRef = useRef(null)
+    const location = useLocation()
+
+    useEffect(()=>{
+        setIsActive(showLink)
+    },[])    
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const formData = new FormData(formRef.current);
+      const formValues = Object.fromEntries(formData.entries());
+  
+      if(location.pathname == '/login'){
+        handleSesionClick(formValues)
+      }
+    };
 
     return(
         
@@ -16,7 +32,7 @@ export default function FormAuth ({provideClass,showLink, title}) {
                 <h2>{title}</h2>
                 <section className='body-form'>
                     <span>X</span>
-                    <form action="">
+                    <form ref={formRef} onSubmit={handleSubmit}>
                         <label htmlFor="username" title='Username' >Nombre de Usuario</label>
                         <input 
                             type="text" 
@@ -52,7 +68,10 @@ export default function FormAuth ({provideClass,showLink, title}) {
                                     </div> 
                             }
                             
-                            <Button provideClass={'button-ok btn--position'} textContent={'Enviar'} />
+                            <Button 
+                                provideClass={'button-ok btn--position'} 
+                                textContent={'Enviar'}
+                                type={'submit'} />
                         </div>
                     </form>
                 </section>

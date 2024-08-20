@@ -1,21 +1,18 @@
 import { useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import imgLogoDentigrin from '../../assets/images/LogoDentigrin.jpeg';
-import imgLogoOdontoSmile from '../../assets/images/LogoOdontoSmile.jpeg';
-import {paths, filtherPaths} from '../../utils/paths';
+import { useAuth } from '../../auth/useAuth';
+import {useParams, Link, useLocation } from 'react-router-dom';
+import imgLogoDentigrin from '../../../assets/images/LogoDentigrin.jpeg';
+import imgLogoOdontoSmile from '../../../assets/images/LogoOdontoSmile.jpeg';
 import './styles.css';
 
-export default function Navbar () {
+export default function NavbarAccount () {
 
     const location = useLocation(); 
-    const [showLinks, setShowLinks] = useState(false); 
+    const {idProfile} = useParams()
+    const {user} = useAuth()
     const [isActive, setIsActive] = useState(false); 
     
-    const handleLoginClick = () => {setShowLinks(true)};
-    const handleHomeClick = () => {setShowLinks(false)};
     const handleToggleClick = () =>{setIsActive((prevState)=>!prevState)};
-
-    const filtrarRutas = showLinks ?  filtherPaths : paths;
     
     return(
 
@@ -42,19 +39,12 @@ export default function Navbar () {
                             alt=""/>
                     </div>
                     
-                    <div>
-                        <ul className='enlaces'>
-                            {Object.keys(filtrarRutas).map((path) => (
-                                <li key={path}>
-                                    <Link 
-                                        to={path} 
-                                        className={location.pathname === path ? 'active' : ''}
-                                        onClick={path === '/login' ? handleLoginClick : (path === '/' ? handleHomeClick : null)}
-                                    >
-                                        {filtrarRutas[path]}
-                                    </Link>
-                                </li>
-                            ))}
+                    <div className='container-enlaces_navbarAccount'>
+                        <ul className='enlaces-navbarAccount'>
+                            <li><Link to={`${idProfile}`}>Perfil Odontologo</Link></li>
+                            <li><Link to={`${idProfile}/agendar-citas`}>Agendamiento de Citas</Link></li>
+                            <li><Link to={`${idProfile}/historia-clinica`}>Historia Clinica del paciente</Link></li>
+                            <li><Link to={`/`}>Inicio</Link></li>
                         </ul>
                     </div>
                 </nav>
@@ -64,4 +54,3 @@ export default function Navbar () {
        
     )
 };
-

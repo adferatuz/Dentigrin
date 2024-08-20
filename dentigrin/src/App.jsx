@@ -1,21 +1,14 @@
 import { useState } from 'react'
-import Layout from './components/layout/layout'
-import Navbar from './components/header/navbar'
-import Footer from './components/footer/footer'
 import Enrutamiento from './router/enrutamiento'
+import { AuthProvider } from './components/auth/useAuth'
 
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
-    <>
-        <Navbar/>
-        <Layout>
-          <Enrutamiento/>    
-          <Footer/>         
-        </Layout>
-    </>             
-    
+  return ( 
+      <AuthProvider>
+        <Enrutamiento />
+      </AuthProvider>     
   )
 }
 

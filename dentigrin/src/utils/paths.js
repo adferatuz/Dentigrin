@@ -1,4 +1,3 @@
-
 export const paths = {
     '/': 'Inicio',
     '/nosotros': 'Nosotros',
@@ -12,3 +11,6 @@ export const filtherPaths = {
     '/login': 'Iniciar Sesión', 
     '/register': 'Registrarse'
 };
+
+export const odontologoPaths = {
+}

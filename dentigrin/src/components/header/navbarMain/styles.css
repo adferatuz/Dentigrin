@@ -124,6 +124,14 @@
   left: 5px;
 }
 
+
+/*Estilos para el componente AccountLayout.jsx*/
+.account--enlaces{
+  
+}
+
+
+
 @media screen and (max-width: 548px) {
   .enlaces { 
     flex-direction: column;   

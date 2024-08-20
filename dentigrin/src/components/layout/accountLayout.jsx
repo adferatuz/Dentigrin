@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import Footer from '../footer/footer.jsx';
-import Navbar from '../header/navbarMain/navbar.jsx';
+import NavbarAccount from '../header/navbarAccount/navbarAccount.jsx';
 import './style.css';
 
-export default function Layout (){   
+export default function AccountLayout (){   
     return(
         <section className="layout">
-            <Navbar/>                
+            <NavbarAccount/>                
             <Outlet/> 
             <Footer/>                             
         </section>        
