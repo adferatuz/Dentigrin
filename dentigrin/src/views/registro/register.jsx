@@ -1,9 +1,12 @@
+import FormAuth from "../../components/formAuth/formAuth";
+import './styles.css'
 
 
 export default function Register(props) {
     return(
-        <div>
-            <h2>Pagina de Registro</h2>
-        </div>
+        <FormAuth 
+            title={'Registra tu cuenta'}
+            showLink={false} 
+        />        
     )    
 }

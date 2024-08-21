@@ -6,9 +6,5 @@
   }
 
 
-@media (max-width: 768px) {
-  .layout {
-      grid-template-rows: auto;
-  }
-}
+
   
