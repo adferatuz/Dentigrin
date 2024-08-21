@@ -16,7 +16,13 @@ export default function Login() {
     useEffect(() => {
         if (user) {
             console.log('Este es el valor de user: ', user);
-            navigate(state?.location?.pathname ?? `/perfil/${user.id_usuario}`);
+            if(user.rol === 'paciente'){
+                navigate(state?.location?.pathname ?? `/perfil/${user.id_usuario}`);
+                
+            }else{
+                navigate(state?.location?.pathname ?? `/perfil/odontologo/${user.id_usuario}`);
+
+            }
         }
     }, [user, navigate, state]);
 

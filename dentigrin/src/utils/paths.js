@@ -12,5 +12,14 @@ export const filtherPaths = {
     '/register': 'Registrarse'
 };
 
-export const odontologoPaths = {
-}
+export const listPathsNavbarAccount =[
+    {
+        '/agendar-citas-paciente' : 'Agendamiento de citas'
+        
+    },
+    {
+        '/agendar-citas-odontologo' : 'Agendamiento de citas',
+        '/historia-clinica' : 'Historia Clinica del Paciente'
+       
+    }
+] 

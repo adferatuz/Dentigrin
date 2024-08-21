@@ -13,7 +13,7 @@
       username: 'janedoe',
       password: 'user123',
       email: 'janedoe@example.com',
-      rol: 'user',
+      rol: 'paciente',
       fecha_creacion: '2023-08-18T11:00:00Z',
       fecha_actualizacion: '2023-08-18T11:00:00Z'
     },
