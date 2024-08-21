@@ -30,6 +30,10 @@
     
   }
 
+.enlaces-navbarAccount li:last-child a{
+  right: -10px;
+}
+
 .enlaces-navbarAccount li a {
     text-decoration: none; /* Quita la subrayado predeterminado */
     color: #000; /* Color inicial del texto */

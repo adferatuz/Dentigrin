@@ -1,10 +1,11 @@
 import Button from '../button/button'
 import './styles.css'
 
-export default function PerfilPaciente () {
+export default function PerfilPaciente ({title}) {
     return (
-        <form>
-            <h2>Registro usuario</h2>
+        <div className='container-form--perfil'>
+            <form className='form-profile'>
+                <h2>Perfil {title}</h2>
                 <div className="form-group">
                     
                     <label>Nombre de usuario</label>
@@ -75,10 +76,10 @@ export default function PerfilPaciente () {
                     <div className="form from-group3">
                         <Button provideClass={'button-ok'} textContent={'Actualizar'} />
                     </div>
-                         
+                        
                 </div>
             </form>
-
+        </div>
     )
 
 }
