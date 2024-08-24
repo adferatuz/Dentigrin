@@ -1,8 +1,6 @@
 import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
-import Manejador404 from '../../components/handleErrors/manejador404';
-
 
 export default function VistaPerfilOdontologo (){
     const {user} = useAuth()
@@ -26,7 +24,7 @@ export default function VistaPerfilOdontologo (){
                         </div>
                     ):
                     (<div className='container--account'><h1>Este es el componente historia clinica desde Odontologo</h1></div>)                          
-            
+
             }
         </>   
         

@@ -16,8 +16,6 @@ export default function NavbarAccount () {
     const basePath = idPaciente ? idPaciente : `odontologo/${idOdontologo}`;
     
     const handleToggleClick = () =>{setIsActive((prevState)=>!prevState)};
-    console.log('Este es el idOdontologo: ',idOdontologo)
-    console.log('Este es el idPaciente: ',idPaciente)
     
     return(
 
