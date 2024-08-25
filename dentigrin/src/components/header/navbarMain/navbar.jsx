@@ -1,8 +1,8 @@
 import { useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import imgLogoDentigrin from '../../assets/images/LogoDentigrin.jpeg';
-import imgLogoOdontoSmile from '../../assets/images/LogoOdontoSmile.jpeg';
-import {paths, filtherPaths} from '../../utils/paths';
+import imgLogoDentigrin from '../../../assets/images/LogoDentigrin.jpeg';
+import imgLogoOdontoSmile from '../../../assets/images/LogoOdontoSmile.jpeg';
+import {paths, filtherPaths} from '../../../utils/paths';
 import './styles.css';
 
 export default function Navbar () {

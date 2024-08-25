@@ -1,4 +1,3 @@
-
 .navbar {
     background-color: #30c6ab;
     color: #333;
@@ -18,16 +17,24 @@
   gap: 10px;
 }
 
-.enlaces {
+.container-enlaces_navbarAccount{
+  width: 83%;
+}
+
+.enlaces-navbarAccount {
     list-style: none; /* Quita las viñetas */
     display: flex;
-    gap: 10px; /* Espacio entre los elementos */
+    gap: 40px; /* Espacio entre los elementos */
     padding: 0;
     margin: 0;
     
   }
 
-.enlaces li a {
+.enlaces-navbarAccount li:last-child a{
+  right: -10px;
+}
+
+.enlaces-navbarAccount li a {
     text-decoration: none; /* Quita la subrayado predeterminado */
     color: #000; /* Color inicial del texto */
     position: relative;
@@ -36,7 +43,7 @@
   }
 
 
-.enlaces li a::after {
+.enlaces-navbarAccount li a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -49,14 +56,14 @@
     transition: transform 0.3s ease;
   }  
   
-  .enlaces li a:hover::after,
-  .enlaces li a.active::after  {
+  .enlaces-navbarAccount li a:hover::after,
+  .enlaces-navbarAccount li a.active::after  {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 
   /* Estilos para el enlace activo */
-.enlaces li a.active {
+.enlaces-navbarAccount li a.active {
   color: #075951; /* Opcional: cambia el color del enlace activo */
   pointer-events: none;  
 }
@@ -175,5 +182,3 @@
   z-index: -2;
  }
 }
- 
-
