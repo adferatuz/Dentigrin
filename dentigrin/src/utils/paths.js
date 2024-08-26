@@ -21,5 +21,12 @@ export const listPathsNavbarAccount =[
         '/agendar-citas-odontologo' : 'Agendamiento de citas',
         '/historia-clinica' : 'Historia Clinica del Paciente'
        
+    },
+    {
+        '/agendamiento-citas-admin' : 'Agendamiento de citas',
+        '/cronograma-citas' : 'Cronograma General de Citas',
+        '/reasignacion-citas' : 'Reasignacion Citas Paciente',
+        '/configuracion-sistema' : 'Configuraciones del Sistema'
+       
     }
 ] 

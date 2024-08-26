@@ -9,11 +9,11 @@ import './styles.css';
 export default function NavbarAccount () {
 
     const location = useLocation(); 
-    const {idPaciente, idOdontologo} = useParams()
+    const {idPaciente, idOdontologo, idAdmin} = useParams()
     const {user} = useAuth()
     const [isActive, setIsActive] = useState(false);
-    const filtrarPaths = user.rol === 'paciente' ? listPathsNavbarAccount[0] : listPathsNavbarAccount[1]
-    const basePath = idPaciente ? idPaciente : `odontologo/${idOdontologo}`;
+    const filtrarPaths = user.rol === 'paciente' ? listPathsNavbarAccount[0] : user.rol === 'odontologo' ? listPathsNavbarAccount[1] : listPathsNavbarAccount[2];
+    const basePath = idPaciente ? idPaciente : idOdontologo ? `odontologo/${idOdontologo}` : `admin/${idAdmin}`;
     
     const handleToggleClick = () =>{setIsActive((prevState)=>!prevState)};
     

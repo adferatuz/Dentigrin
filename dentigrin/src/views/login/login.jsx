@@ -19,9 +19,10 @@ export default function Login() {
             if(user.rol === 'paciente'){
                 navigate(state?.location?.pathname ?? `/perfil/${user.id_usuario}`);
                 
-            }else{
+            }else if(user.rol === 'odontologo'){
                 navigate(state?.location?.pathname ?? `/perfil/odontologo/${user.id_usuario}`);
-
+            }else{
+                navigate(state?.location?.pathname ?? `/perfil/admin/${user.id_usuario}`);     
             }
         }
     }, [user, navigate, state]);

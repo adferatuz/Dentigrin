@@ -11,6 +11,7 @@ import AccountLayout from '../components/layout/accountLayout'
 import VistaPerfilPaciente from '../views/profile/vistaPerfilPaciente'
 import VistaPerfilOdontologo from '../views/profile/vistaPerfilOdontologo'
 import {ProtectedRoute} from '../components/auth/protectedRoute'
+import VistaPerfilAdmin from '../views/profile/vistaPerfilAdmin'
 
 export default function Enrutamiento() {
     return(
@@ -26,6 +27,7 @@ export default function Enrutamiento() {
             <Route path='/perfil' element={<ProtectedRoute><AccountLayout/></ProtectedRoute>} >               
                 <Route path='/perfil/:idPaciente/*' element= {<VistaPerfilPaciente/> }/>                
                 <Route path={'/perfil/odontologo/:idOdontologo/*'} element= {<VistaPerfilOdontologo/> }/>                
+                <Route path={'/perfil/admin/:idAdmin/*'} element= {<VistaPerfilAdmin/> }/>                
             </Route>         
             <Route path='*' element= {<Manejador404/>} />  
         </Routes>
