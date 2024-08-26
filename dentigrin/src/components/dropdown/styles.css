@@ -1,0 +1,55 @@
+.container-dropdown{
+    position: absolute;
+    display: none;
+    width: 200px;
+    height: 100px;
+    background-color: #fffffff6;
+    border-radius: 8px;
+    padding: 0.5em;
+    transition: all 0.4s ease-in;
+}
+.container-visibility{
+    display: block;
+}
+
+.enlaces-dropdown {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    
+  }
+
+.enlaces-dropdown li a {
+    text-decoration: none; /* Quita la subrayado predeterminado */
+    color: #000; /* Color inicial del texto */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el color */
+  }
+
+
+.enlaces-dropdown li a::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    background-color: #000; /* Color de la línea */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }  
+  
+  .enlaces-dropdown li a:hover::after,
+  .enlaces-dropdown li a.active::after  {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* Estilos para el enlace activo */
+.enlaces-dropdown li a.active {
+  color: #075951; /* Opcional: cambia el color del enlace activo */
+  pointer-events: none;  
+}
