@@ -5,22 +5,25 @@ import {listPathsNavbarAccount} from '../../../utils/paths'
 import imgLogoDentigrin from '../../../assets/images/LogoDentigrin.jpeg';
 import imgLogoOdontoSmile from '../../../assets/images/LogoOdontoSmile.jpeg';
 import './styles.css';
+import Dropdown from '../../dropdown/dropdown';
 
 export default function NavbarAccount () {
 
     const location = useLocation(); 
-    const {idPaciente, idOdontologo} = useParams()
+    const {idPaciente, idOdontologo, idAdmin} = useParams()
     const {user} = useAuth()
     const [isActive, setIsActive] = useState(false);
-    const filtrarPaths = user.rol === 'paciente' ? listPathsNavbarAccount[0] : listPathsNavbarAccount[1]
-    const basePath = idPaciente ? idPaciente : `odontologo/${idOdontologo}`;
+    const [isFunction, setIsFunction] = useState(false);
+    const filtrarPaths = user.rol === 'paciente' ? listPathsNavbarAccount[0] : user.rol === 'odontologo' ? listPathsNavbarAccount[1] : listPathsNavbarAccount[2];
+    const basePath = idPaciente ? idPaciente : idOdontologo ? `odontologo/${idOdontologo}` : `admin/${idAdmin}`;
     
     const handleToggleClick = () =>{setIsActive((prevState)=>!prevState)};
-    
+    const handleOnMouseOverFunctions = () => {setIsFunction(true)};
+    const handleOnMouseOutFunctions = () => {setIsFunction(false)};
     return(
 
         <>
-            <div className='header'>
+            <div className='header' onClick={handleOnMouseOutFunctions}>
                 <label
                     htmlFor="burger"
                     className={`burger ${isActive ? "burger--active" : ""}`}
@@ -44,20 +47,27 @@ export default function NavbarAccount () {
                     
                     <div className='container-enlaces_navbarAccount'>
                         <ul className='enlaces-navbarAccount'>
-                            <li><Link to={`${basePath}`}>Perfil {user.rol}</Link></li>
-                            {Object.keys(filtrarPaths).map((path) => (
-                                <li key={path}>
-                                    <Link 
-                                        to={`${basePath}${path}`} 
-                                        className={location.pathname === `${idPaciente}${path}` ? 'active' : ''}
-                                    >
-                                        {filtrarPaths[path]}
-                                    </Link>
-                                </li>
-                            )) 
+                            <li><Link to={`${basePath}`} onMouseOver={handleOnMouseOutFunctions}>Perfil {user.rol}</Link></li>
+                            {
+                                basePath === `admin/${idAdmin}` ? 
+                                <li>
+                                    <Link to={location.pathname} onMouseOver={handleOnMouseOverFunctions} >Funciones</Link> 
+                                    {isFunction ? <Dropdown handleClick={handleOnMouseOutFunctions} className={'container-visibility'} basePath={basePath} paths={filtrarPaths} /> : ''}
+                                </li> 
+                            
+                            :
+                                Object.keys(filtrarPaths).map((path) => (
+                                    <li key={path}>
+                                        <Link 
+                                            to={`${basePath}${path}`} 
+                                        >
+                                            {filtrarPaths[path]}
+                                        </Link>
+                                    </li>
+                                )) 
                             
                             }
-                            <li><Link to={`/`}>Inicio</Link></li>
+                            <li><Link to={`/`} onMouseOver={handleOnMouseOutFunctions}>Inicio</Link></li>
                         </ul>
                     </div>
                 </nav>

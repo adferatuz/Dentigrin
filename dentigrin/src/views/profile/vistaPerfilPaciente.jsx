@@ -3,6 +3,7 @@ import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
 import Manejador404 from '../../components/handleErrors/manejador404';
+import TablePatientConsult from '../../components/tables/tablePatientConsult/tablePatientConsult';
 
 
 export default function VistaPerfilPaciente (){
@@ -23,7 +24,7 @@ export default function VistaPerfilPaciente (){
                     location.pathname === `/perfil/${idPaciente}/agendar-citas-paciente` ? (
                         <div className='container--account'>
                             <Routes>
-                                <Route path={`agendar-citas-paciente`} element={<h1>Este es el componenete Agendamiento citas pacientes</h1>}/>
+                                <Route path={`agendar-citas-paciente`} element={<TablePatientConsult/>}/>
                             </Routes>
                         </div>
                     ):''             
