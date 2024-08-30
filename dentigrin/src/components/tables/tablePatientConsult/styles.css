@@ -1,0 +1,53 @@
+.container-table{
+    width: 80%;
+    padding-top: 30px;
+}
+
+.table-consults{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.title-table{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.table-consults caption{
+    text-align: justify;
+}
+
+.table-head th:nth-child(1) {
+    width: 30%;
+  }
+  
+  .table-head th:nth-child(2) {
+    width: 20%;
+  }
+  
+  .table-head th:nth-child(3) {
+    width: 15%;
+  }
+  
+  .table-head th:nth-child(4) {
+    width: 35%;
+  }
+  .table-head th:nth-child(5) {
+    width: 35%;
+  }
+  
+  th,
+  td {
+    padding: 1em;
+    text-align: center;
+  }
+
+  tr{
+    border-bottom: 1px solid #0000001f;
+  }
+
+.btn-dimensions{
+    font-size: 15px;
+    padding: 10px 25px;
+}
