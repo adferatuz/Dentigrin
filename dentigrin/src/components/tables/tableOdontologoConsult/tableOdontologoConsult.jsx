@@ -1,10 +1,9 @@
-import { datosConsulta, nombreColumnas } from "../../../utils/datosConsultaPaciente";
+import { datosConsulta, nombreColumnas } from '../../../utils/datosConsultaOdontologo'
 import Button from '../../button/button'
 import '../stylesTables.css'
 import './styles.css'
 
-const TablePatientConsult = () => {
-
+const TableOdontologoConsult = ()=> {
     return(
         <section className="container-table">            
             <table className="table-consults">
@@ -23,19 +22,24 @@ const TablePatientConsult = () => {
                         {
                             datosConsulta.map((data, index) =>(
                                 <tr key={index}>
-                                    <td>{data.idOdontologo}</td>
-                                    <td>{data.horaConsulta}</td>
-                                    <td>{data.fechaConsulta}</td>
-                                    <td>Dr. {data.nombreOdontologo}</td>
-                                    <td><Button provideClass={'button-ok btn-dimensions'} textContent={'AGENDAR CITA'} /></td>
+                                    <td>{data.idPaciente}</td>
+                                    <td>{data.nombrePaciente}</td>
+                                    <td>{data.nombreOdontologo}</td>
+                                    <td>Dr. {data.servicio}</td>
+                                    <td>Dr. {data.fechaConsulta}</td>
+                                    <td>Dr. {data.horaConsulta}</td>
+                                    <td>
+                                        <Button provideClass={'button-ok btn-dimensions'} textContent={'Asistío'} />
+                                        <Button provideClass={'button-delete btn-dimensions'} textContent={'No Asístio'} />
+                                    </td>
+                                    <td></td>
                                 </tr>
                             ))
                         }                   
                 </tbody>
             </table>
         </section>
-
     )
 }
 
-export default TablePatientConsult;
+export default TableOdontologoConsult;

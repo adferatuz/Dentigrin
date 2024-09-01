@@ -1,4 +1,4 @@
-import PerfilPaciente from '../../components/PerfilPaciente/PerfilPaciente';
+import PerfilPaciente from '../../components/profiles/PerfilPaciente';
 import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
