@@ -20,8 +20,8 @@
     max-width: 400px;
     height: 90%;
     margin: 10px auto;
-    animation: slideIn 1s ease-in-out;
-    
+    overflow-y: auto;
+    animation: slideIn 1s ease-in-out;    
 }
 
 .cerrar-modal {

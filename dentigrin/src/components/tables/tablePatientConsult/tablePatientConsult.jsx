@@ -2,6 +2,7 @@ import { datosConsulta, nombreColumnas } from "../../../utils/datosConsultaPacie
 import { useState } from "react";
 import Button from '../../button/button'
 import Modal from '../../modal/modal'
+import FormConsulta from '../../forms/formConsulta'
 import '../stylesTables.css'
 import './styles.css'
 
@@ -40,7 +41,7 @@ const TablePatientConsult = () => {
                         }                   
                 </tbody>
             </table>
-            {openModal ? (<Modal onClick= {handleClick}> </Modal> ): ''}
+            {openModal ? (<Modal onClick= {handleClick}> <FormConsulta/> </Modal> ): ''}
             
         </section>
 
