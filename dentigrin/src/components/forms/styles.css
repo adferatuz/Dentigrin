@@ -133,3 +133,71 @@
 .input-form:focus{
     outline: none;
 }
+
+/*estilos formulario perfil administrador*/
+
+.form-perfil-admin{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 0.5fr 0.25fr 0.25fr 0.25fr 0.25fr 1fr;
+    gap: 8px;
+}
+
+.container-title-perfil-admin{
+    grid-column: span 4 / span 4;
+    display: flex;
+    align-items: flex-end;
+}
+
+.grp-1{
+    grid-column: span 2 / span 2;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.grp-2{
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.grp-3{
+    grid-column: span 4 / span 4;
+    grid-row-start: 3;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.grp-4{
+    grid-column: span 4 / span 4;
+    grid-row-start: 4;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.grp-5{
+    grid-column: span 4 / span 4;
+    grid-row-start: 5;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.grp-6{
+    grid-column-start: 4;
+    grid-row-start: 6;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+}
+
+.grp-6 button{
+    padding: 10px ;
+}

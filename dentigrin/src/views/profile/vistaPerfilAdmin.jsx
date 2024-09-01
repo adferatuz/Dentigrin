@@ -2,6 +2,7 @@ import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
 import Manejador404 from '../../components/handleErrors/manejador404';
+import FormPerfilAdmin from '../../components/forms/formPerfilAdmin';
 
 
 export default function VistaPerfilAdmin (){
@@ -16,7 +17,7 @@ export default function VistaPerfilAdmin (){
                 user.rol === 'admin' ? 
                     location.pathname === `/perfil/admin/${idAdmin}` ? (
                         <div className='container--account'>
-                            <h1>Este es el perfil del Admin</h1>
+                            <FormPerfilAdmin idAdmin ={idAdmin} />
                         </div>
                     ):
                     location.pathname === `/perfil/admin/${idAdmin}/agendamiento-citas-admin` ? (
