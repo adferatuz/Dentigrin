@@ -51,7 +51,7 @@ export default function NavbarAccount () {
                             {
                                 basePath === `admin/${idAdmin}` ? 
                                 <li>
-                                    <Link to={location.pathname} onMouseOver={handleOnMouseOverFunctions} >Funciones</Link> 
+                                    <Link to={location.pathname} onMouseOver={handleOnMouseOverFunctions} >Funciones &nbsp;<span>&#x25BC;</span></Link> 
                                     {isFunction ? <Dropdown handleClick={handleOnMouseOutFunctions} className={'container-visibility'} basePath={basePath} paths={filtrarPaths} /> : ''}
                                 </li> 
                             

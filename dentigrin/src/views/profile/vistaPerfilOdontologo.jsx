@@ -3,6 +3,7 @@ import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
 import TableOdontologoConsult from '../../components/tables/tableOdontologoConsult/tableOdontologoConsult';
 import PerfilOdontologo from '../../components/profiles/perfilOdontologo';
+import HistoriaClinica from '../../components/historiaClinica/historiaClinica';
 
 export default function VistaPerfilOdontologo (){
     const {user} = useAuth()
@@ -25,7 +26,7 @@ export default function VistaPerfilOdontologo (){
                             </Routes>
                         </div>
                     ):
-                    (<div className='container--account'><h1>Este es el componente historia clinica desde Odontologo</h1></div>)                          
+                    (<div className='container--account'><HistoriaClinica user={user}/></div>)                          
 
             }
         </>   

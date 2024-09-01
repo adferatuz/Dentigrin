@@ -25,9 +25,9 @@ const TableOdontologoConsult = ()=> {
                                     <td>{data.idPaciente}</td>
                                     <td>{data.nombrePaciente}</td>
                                     <td>{data.nombreOdontologo}</td>
-                                    <td>Dr. {data.servicio}</td>
-                                    <td>Dr. {data.fechaConsulta}</td>
-                                    <td>Dr. {data.horaConsulta}</td>
+                                    <td>{data.servicio}</td>
+                                    <td>{data.fechaConsulta}</td>
+                                    <td>{data.horaConsulta}</td>
                                     <td>
                                         <Button provideClass={'button-ok btn-dimensions'} textContent={'Asistío'} />
                                         <Button provideClass={'button-delete btn-dimensions'} textContent={'No Asístio'} />

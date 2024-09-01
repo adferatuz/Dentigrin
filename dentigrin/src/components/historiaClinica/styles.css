@@ -1,0 +1,59 @@
+.form-historia-clinica{
+    width: 80%;
+    margin-top: 6%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 0.5fr 1fr 1fr 0.5fr;
+    gap: 8px;
+}
+
+.form-historia-clinica h2{
+    grid-column: span 2 / span 2;
+    font-size: 1.5em;
+}
+
+.div2 {
+    grid-column: span 3 / span 3;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.div2 input{
+    width: 50%;
+    padding: 5px; /* Espacio interior en el input */
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.div2 input:focus{
+    outline: none;
+}
+
+.div3 {
+    grid-column: span 3 / span 3;
+    grid-row-start: 3;
+    display: grid;
+    gap: 5px;
+}
+
+.div4 {
+    grid-column: span 3 / span 3;
+    grid-row-start: 4;
+    display: grid;
+    gap: 5px;
+
+}
+
+.div5 {
+    grid-column-start: 3;
+    grid-row-start: 5;
+    display: flex;
+    justify-content: flex-end; /* Centra los botones horizontalmente */
+    align-items: flex-start; /* Centra los botones verticalmente */
+    gap: 5px; /* Espacio entre los botones */ 
+}
