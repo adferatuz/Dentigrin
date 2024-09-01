@@ -1,7 +1,7 @@
 import Button from '../button/button'
 import './styles.css'
 
-export default function PerfilPaciente ({title}) {
+export default function FormPerfilPaciente ({title}) {
     return (
         <div className='container-form--perfil'>
             <form className='form-profile'>

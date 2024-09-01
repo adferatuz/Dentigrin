@@ -2,7 +2,7 @@ import Button from '../button/button'
 import imgEdit from '../../assets/icons/editar-texto.png'
 import './styles.css'
 
-export default function PerfilOdontologo ({title, idOdontologo}) {
+export default function FormPerfilOdontologo ({title, idOdontologo}) {
     return (
         <div className='container-form--perfil'>
             <form className='form-profile'>

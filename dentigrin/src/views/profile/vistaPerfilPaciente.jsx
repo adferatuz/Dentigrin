@@ -1,4 +1,4 @@
-import PerfilPaciente from '../../components/profiles/PerfilPaciente';
+import FormPerfilPaciente from '../../components/forms/formPerfilPaciente';
 import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
@@ -18,7 +18,7 @@ export default function VistaPerfilPaciente (){
                 user.rol === 'paciente' ? 
                     location.pathname === `/perfil/${idPaciente}` ? (
                         <div className='container--account'>
-                            <PerfilPaciente title={user.rol}/>
+                            <FormPerfilPaciente title={user.rol}/>
                         </div>
                     ):
                     location.pathname === `/perfil/${idPaciente}/agendar-citas-paciente` ? (

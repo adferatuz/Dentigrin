@@ -1,0 +1,135 @@
+.container-form--perfil{
+    width: 100%;
+    max-width: 70%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.form-profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    align-items: top;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.from-group2 {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    justify-content: space-between;
+    gap: 5px 5px;
+    position: relative;
+}
+
+
+.form-group input, .form-group select {
+    height: 30px;
+    color: dimgray;
+    border-radius: 5px;
+    border: 1px solid;
+    
+}
+
+.form.from-group3 input {
+    height: 35px;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 20px;
+}
+
+.container-icon-edit{
+    width: 20px;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
+
+.icon-edit{
+    width: 100%;
+    filter: invert(0%) brightness(0%);
+    transition: all 0.4s ease-out;
+}
+
+#idOdontologo[readonly]{
+    pointer-events: none;
+    background-color: #f0f0f0;
+}
+
+#idOdontologo:focus {
+    outline: none;
+}
+
+/*Estilos del Formulario consultas*/
+
+.form-consultas{
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 0.5fr;
+    gap: 8px; 
+    
+}
+
+.container-title-consults{
+    grid-column: span 5 / span 5;
+}
+
+.container-title-consults h2{
+    text-align: center;
+    font-size: 1.7em;
+}
+
+.group-1{
+    grid-column: span 5 / span 5;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.group-2{
+    grid-column: span 5 / span 5;
+    grid-row-start: 3;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.group-3{
+    grid-column: span 5 / span 5;
+    grid-row-start: 4;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    justify-content: flex-end;
+    gap: 10px; /* Espacio entre cada par label-input */
+}
+
+.group-4{
+    grid-column-start: 5;
+    grid-row-start: 5;
+    display: flex;
+    justify-content: flex-end; /* Centra los botones horizontalmente */
+    align-items: flex-end; /* Centra los botones verticalmente */
+    gap: 5px; /* Espacio entre los botones */ 
+}
+
+.input-form{
+    width: auto;
+    padding: 5px; /* Espacio interior en el input */
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.input-form:focus{
+    outline: none;
+}

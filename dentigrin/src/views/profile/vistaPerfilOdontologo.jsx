@@ -2,7 +2,7 @@ import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
 import TableOdontologoConsult from '../../components/tables/tableOdontologoConsult/tableOdontologoConsult';
-import PerfilOdontologo from '../../components/profiles/perfilOdontologo';
+import FormPerfilOdontologo from '../../components/forms/formPerfilOdontologo';
 import HistoriaClinica from '../../components/historiaClinica/historiaClinica';
 
 export default function VistaPerfilOdontologo (){
@@ -16,7 +16,7 @@ export default function VistaPerfilOdontologo (){
                 //Aqui se renderiza el perfil con el rol odontologo
                     location.pathname === `/perfil/odontologo/${idOdontologo}` ? (
                         <div className='container--account'>
-                            <PerfilOdontologo title={user.rol} idOdontologo={idOdontologo}/>
+                            <FormPerfilOdontologo title={user.rol} idOdontologo={idOdontologo}/>
                         </div>
                     ):
                     location.pathname === `/perfil/odontologo/${idOdontologo}/agendar-citas-odontologo` ? (
