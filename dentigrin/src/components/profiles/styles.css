@@ -2,6 +2,7 @@
     width: 100%;
     max-width: 70%;
     height: 100%;
+    overflow-y: auto;
 }
 
 .form-profile {
@@ -22,12 +23,16 @@
     grid-template-columns: 49% 49%;
     justify-content: space-between;
     gap: 5px 5px;
+    position: relative;
 }
 
 
 .form-group input, .form-group select {
-    height: 20px;
+    height: 30px;
     color: dimgray;
+    border-radius: 5px;
+    border: 1px solid;
+    
 }
 
 .form.from-group3 input {
@@ -39,3 +44,24 @@
     gap: 20px;
 }
 
+.container-icon-edit{
+    width: 20px;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
+
+.icon-edit{
+    width: 100%;
+    filter: invert(0%) brightness(0%);
+    transition: all 0.4s ease-out;
+}
+
+#idOdontologo[readonly]{
+    pointer-events: none;
+    background-color: #f0f0f0;
+}
+
+#idOdontologo:focus {
+    outline: none;
+}

@@ -1,6 +1,8 @@
 import {Routes,Route, useParams, useLocation } from 'react-router-dom'
 import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
+import TableOdontologoConsult from '../../components/tables/tableOdontologoConsult/tableOdontologoConsult';
+import PerfilOdontologo from '../../components/profiles/perfilOdontologo';
 
 export default function VistaPerfilOdontologo (){
     const {user} = useAuth()
@@ -13,13 +15,13 @@ export default function VistaPerfilOdontologo (){
                 //Aqui se renderiza el perfil con el rol odontologo
                     location.pathname === `/perfil/odontologo/${idOdontologo}` ? (
                         <div className='container--account'>
-                            <h1>Perfil {user.rol}</h1>
+                            <PerfilOdontologo title={user.rol} idOdontologo={idOdontologo}/>
                         </div>
                     ):
                     location.pathname === `/perfil/odontologo/${idOdontologo}/agendar-citas-odontologo` ? (
                         <div className='container--account'>
                             <Routes>
-                                <Route path={`agendar-citas-odontologo`} element={<h1>Este es el componenete Agendamiento citas Odontologo</h1>}/>
+                                <Route path={`agendar-citas-odontologo`} element={<TableOdontologoConsult/>}/>
                             </Routes>
                         </div>
                     ):
