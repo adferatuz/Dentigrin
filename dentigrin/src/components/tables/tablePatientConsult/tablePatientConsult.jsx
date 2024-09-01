@@ -1,9 +1,16 @@
 import { datosConsulta, nombreColumnas } from "../../../utils/datosConsultaPaciente";
+import { useState } from "react";
 import Button from '../../button/button'
+import Modal from '../../modal/modal'
 import '../stylesTables.css'
 import './styles.css'
 
 const TablePatientConsult = () => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleClick = () =>{
+        setOpenModal((prevState) => (!prevState))
+    }
 
     return(
         <section className="container-table">            
@@ -27,12 +34,14 @@ const TablePatientConsult = () => {
                                     <td>{data.horaConsulta}</td>
                                     <td>{data.fechaConsulta}</td>
                                     <td>Dr. {data.nombreOdontologo}</td>
-                                    <td><Button provideClass={'button-ok btn-dimensions'} textContent={'AGENDAR CITA'} /></td>
+                                    <td><Button onclick={handleClick} provideClass={'button-ok btn-dimensions'} textContent={'AGENDAR CITA'} /></td>
                                 </tr>
                             ))
                         }                   
                 </tbody>
             </table>
+            {openModal ? (<Modal onClick= {handleClick}> </Modal> ): ''}
+            
         </section>
 
     )
