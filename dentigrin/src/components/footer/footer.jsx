@@ -3,7 +3,7 @@ import iconInstagram from '../../assets/icons/logotipo-de-instagram.png'
 import iconfb from '../../assets/icons/fbIcon.png'
 import iconYT from '../../assets/icons/youtube.png'
 
-export default function Footer (){
+export default function Footer ({onClick}){
     return(
             <div className="footer">
                 <div className='footer-info'>
@@ -11,8 +11,8 @@ export default function Footer (){
                     <p>Todos los derechos reservados</p>
                 </div>
                 <div className="footer-info">
-                    <p>Terminos y condiciones</p>
-                    <p>Politica de privacidad</p>
+                    <p onClick={onClick}>Terminos y condiciones</p>
+                    <p onClick={onClick}>Politica de privacidad</p>
                 </div>
                 <div className="footer-icons">
                     <div className="icon"><img src={iconInstagram} alt="icono de instagram" /></div>
