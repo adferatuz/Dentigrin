@@ -30,7 +30,8 @@ const FormPerfilAdmin = ({idAdmin}) =>{
                     className='input-form' 
                     type="text"
                     id='id_admin'
-                    value={idAdmin} />
+                    value={idAdmin}
+                    readOnly />
             </div>
             <div className='grp-4'>
                 <label htmlFor="email-admin" title='email del Administrador'>Email</label>

@@ -43,6 +43,14 @@
   .table-head th:nth-child(7) {
     width: 15%;
   }
+
+  #container-btns{
+    width: 35%;
+  }
+
+
+
+ 
   
   th,
   td {

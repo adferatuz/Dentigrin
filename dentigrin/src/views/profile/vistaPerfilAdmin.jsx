@@ -3,6 +3,8 @@ import { useAuth } from '../../components/auth/useAuth';
 import './styles.css'
 import Manejador404 from '../../components/handleErrors/manejador404';
 import FormPerfilAdmin from '../../components/forms/formPerfilAdmin';
+import TablePatientConsult from '../../components/tables/tablePatientConsult/tablePatientConsult';
+import Calendar from '../../components/calendar/calendar';
 
 
 export default function VistaPerfilAdmin (){
@@ -23,14 +25,14 @@ export default function VistaPerfilAdmin (){
                     location.pathname === `/perfil/admin/${idAdmin}/agendamiento-citas-admin` ? (
                         <div className='container--account'>
                             <Routes>
-                                <Route path={`agendamiento-citas-admin`} element={<h1>Este es el componenete Agendamiento citas Administrador</h1>}/>
+                                <Route path={`agendamiento-citas-admin`} element={<TablePatientConsult rol={user.rol} />}/>
                             </Routes>
                         </div>
                     ):
                     location.pathname === `/perfil/admin/${idAdmin}/cronograma-citas` ? (
                         <div className='container--account'>
                             <Routes>
-                                <Route path={`cronograma-citas`} element={<h1>Este es el componenete Cronograma de citas</h1>}/>
+                                <Route path={`cronograma-citas`} element={<Calendar />}/>
                             </Routes>
                         </div>
                     ):

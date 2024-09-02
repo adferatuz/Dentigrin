@@ -24,7 +24,7 @@ export default function VistaPerfilPaciente (){
                     location.pathname === `/perfil/${idPaciente}/agendar-citas-paciente` ? (
                         <div className='container--account'>
                             <Routes>
-                                <Route path={`agendar-citas-paciente`} element={<TablePatientConsult/>}/>
+                                <Route path={`agendar-citas-paciente`} element={<TablePatientConsult rol={user.rol}/>}/>
                             </Routes>
                         </div>
                     ):''             
