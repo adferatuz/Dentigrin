@@ -6,7 +6,7 @@ import FormConsulta from '../../forms/formConsulta'
 import '../stylesTables.css'
 import './styles.css'
 
-const TablePatientConsult = () => {
+const TablePatientConsult = ({rol}) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleClick = () =>{
@@ -23,7 +23,7 @@ const TablePatientConsult = () => {
                     <tr>
                         {
                             nombreColumnas.map((title, index) => (
-                                    <th key={index}>{title}</th> 
+                                    <th id={ title === 'Acciones' ? 'container-btns' : ''} key={index}>{title}</th> 
                         ))}
                     </tr>
                 </thead>
@@ -35,7 +35,16 @@ const TablePatientConsult = () => {
                                     <td>{data.horaConsulta}</td>
                                     <td>{data.fechaConsulta}</td>
                                     <td>Dr. {data.nombreOdontologo}</td>
-                                    <td><Button onclick={handleClick} provideClass={'button-ok btn-dimensions'} textContent={'AGENDAR CITA'} /></td>
+                                    <td>
+                                        {rol === 'paciente' ? 
+                                            (<Button onclick={handleClick} provideClass={'button-ok btn-dimensions'} textContent={'AGENDAR CITA'} />) 
+                                            : 
+                                            (<div >
+                                                <Button onclick={handleClick} provideClass={'button-ok'} textContent={'AGENDAR CITA'} />
+                                                <Button onclick={handleClick} provideClass={'button-ok'} textContent={'EDITAR CITA'} />
+                                                <Button onclick={handleClick} provideClass={'button-delete'} textContent={'ELIMINAR CITA'} />
+                                            </div>)}
+                                    </td>
                                 </tr>
                             ))
                         }                   
