@@ -29,7 +29,7 @@
 
 .enlaces li a {
     text-decoration: none; /* Quita la subrayado predeterminado */
-    color: #000; /* Color inicial del texto */
+    color: #fff; /* Color inicial del texto */
     position: relative;
     cursor: pointer;
     transition: color 0.3s ease; /* Transición suave para el color */
@@ -123,14 +123,6 @@
   top: 28px;
   left: 5px;
 }
-
-
-/*Estilos para el componente AccountLayout.jsx*/
-.account--enlaces{
-  
-}
-
-
 
 @media screen and (max-width: 548px) {
   .enlaces { 

@@ -32,7 +32,7 @@
 
 .enlaces-navbarAccount li a {
     text-decoration: none; /* Quita la subrayado predeterminado */
-    color: #000; /* Color inicial del texto */
+    color: #fff; /* Color inicial del texto */
     position: relative;
     cursor: pointer;
     transition: color 0.3s ease; /* Transición suave para el color */

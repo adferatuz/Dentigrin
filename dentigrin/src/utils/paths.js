@@ -14,19 +14,21 @@ export const filtherPaths = {
 
 export const listPathsNavbarAccount =[
     {
-        '/agendar-citas-paciente' : 'Agendamiento de citas'
-        
+        '/agendar-citas-paciente' : 'Agendamiento de citas'        
     },
     {
         '/agendar-citas-odontologo' : 'Agendamiento de citas',
-        '/historia-clinica' : 'Historia Clinica del Paciente'
-       
+        '/historia-clinica' : 'Historia Clinica del Paciente'       
     },
     {
         '/agendamiento-citas-admin' : 'Agendamiento de citas',
         '/cronograma-citas' : 'Cronograma General de Citas',
-        '/reasignacion-citas' : 'Reasignacion Citas Paciente',
-        '/configuracion-sistema' : 'Configuraciones del Sistema'
-       
+        '/config-system' : 'Configuraciones del Sistema'       
     }
-] 
+]
+
+export const configurationPaths = {
+    'odontologo': 'Configuraciones del sistema Odontologo',
+    'paciente': 'Configuraciones del sistema Pacientes',
+    'configuraciones': 'Configuraciones del sistema Politicas de Seguridad'
+}

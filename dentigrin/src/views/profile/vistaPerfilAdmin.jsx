@@ -5,11 +5,18 @@ import Manejador404 from '../../components/handleErrors/manejador404';
 import FormPerfilAdmin from '../../components/forms/formPerfilAdmin';
 import TablePatientConsult from '../../components/tables/tablePatientConsult/tablePatientConsult';
 import Calendar from '../../components/calendar/calendar';
+import ConfigurationSystem from '../../components/configurationSystems/configurationSystem';
+import { useState } from 'react';
 
 
 export default function VistaPerfilAdmin (){
     const {user} = useAuth()
     const location = useLocation()
+    const [isActive, setIsActive] = useState(false)
+
+    const addClassContainer = ()=>{
+        setIsActive(!isActive)
+    }
 
     const {idAdmin} = useParams();
     return(
@@ -36,17 +43,10 @@ export default function VistaPerfilAdmin (){
                             </Routes>
                         </div>
                     ):
-                    location.pathname === `/perfil/admin/${idAdmin}/reasignacion-citas` ? (
-                        <div className='container--account'>
+                    location.pathname === `/perfil/admin/${idAdmin}/config-system` ? (
+                        <div className={`container--account ${isActive ? 'container-account2': ''}`} >
                             <Routes>
-                                <Route path={`reasignacion-citas`} element={<h1>Este es el componenete Reasignacion citas paciente</h1>}/>
-                            </Routes>
-                        </div>
-                    ):
-                    location.pathname === `/perfil/admin/${idAdmin}/configuracion-sistema` ? (
-                        <div className='container--account'>
-                            <Routes>
-                                <Route path={`configuracion-sistema`} element={<h1>Este es el componenete configuraciones del sistema</h1>}/>
+                                <Route path={`config-system/*`} element={<ConfigurationSystem isActive={isActive} addClassContainer ={addClassContainer} idAdmin={idAdmin}/>}/>                          
                             </Routes>
                         </div>
                     ):''            

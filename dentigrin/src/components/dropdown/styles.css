@@ -10,6 +10,7 @@
 }
 .container-visibility{
     display: block;
+    z-index: 2;
 }
 
 .enlaces-dropdown {
