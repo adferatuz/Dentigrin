@@ -1,0 +1,62 @@
+.wrapper{
+    width: 100%;
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    padding-left: 10%;
+    box-sizing: border-box;
+}
+
+.icon-list {
+    margin-right: 10px;    /* Espacio entre la flecha y el enlace */
+    width: 30px;
+}
+
+.icon-list img{
+    filter: none;
+}
+
+.wrapper ul{
+    width: 80%;
+    list-style-type: none;  /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper .links{
+    padding: 5px 0px;
+    display: flex;         /* Activa Flexbox para los elementos <li> */
+    align-items: center;   /* Alinea verticalmente el contenido en el centro */
+    margin-bottom: 5px;   /* Espacio entre los elementos de la lista */
+}
+
+.wrapper p {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #30c6ab;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #fff;           /* Cambia el color del enlace, opcional */
+    padding: 5px;
+    cursor: pointer;
+    margin: 0px;
+  }
+
+.wrapper p:hover{
+    transform: scale(1.01);
+    transition: all 0.3s ease-in-out;
+}
+
+.wrapper .link-noShow{
+    display: none;
+}
+
+.container-account2{
+    animation: slideIn 1s ease-in-out; 
+}
+
+.noEvents{
+    pointer-events: none;
+}
+
+ 
+

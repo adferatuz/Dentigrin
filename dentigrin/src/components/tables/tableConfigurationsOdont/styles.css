@@ -1,0 +1,27 @@
+.container-table-2{
+    padding-top: 0;
+}
+
+.table-consults2{
+    position: relative;
+}
+
+.title-table2{
+    margin-top: 0;
+    padding-left: 15px;
+    width: 8em;
+    background-color: #fef;
+    border-radius: 5px;
+}
+
+.btns-container{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.btn-dimensions2{
+    color: red;
+}

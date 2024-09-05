@@ -27,7 +27,8 @@ export default function Enrutamiento() {
             <Route path='/perfil' element={<ProtectedRoute><AccountLayout/></ProtectedRoute>} >               
                 <Route path='/perfil/:idPaciente/*' element= {<VistaPerfilPaciente/> }/>                
                 <Route path={'/perfil/odontologo/:idOdontologo/*'} element= {<VistaPerfilOdontologo/> }/>                
-                <Route path={'/perfil/admin/:idAdmin/*'} element= {<VistaPerfilAdmin/> }/>                
+                <Route path={'/perfil/admin/:idAdmin/*'} element= {<VistaPerfilAdmin/> }
+                />                
             </Route>         
             <Route path='*' element= {<Manejador404/>} />  
         </Routes>

@@ -35,6 +35,8 @@ Dentigrin es una solución integral para la administración de clínicas odontol
     ✨ "@fullcalendar/core": "^6.1.15"</br>
     ✨ "@fullcalendar/daygrid": "^6.1.15"</br>
     ✨ "@fullcalendar/react": "^6.1.15"</br>
+    ✨ "@fullcalendar/interaction": "^6.1.15"</br>
+    ✨ "@fullcalendar/timegrid": "^6.1.15",</br>
         
 
     <h4>Dependencias de desarrollo:</h4>
