@@ -4,6 +4,7 @@ import imgFlecha from '../../assets/icons/flecha-derecha.png'
 import { useEffect, useState} from 'react'
 import './styles.css'
 import TableConfigurationsOdont from '../tables/tableConfigurationsOdont/tableConfigurationsOdont'
+import TableConfigurationsPatient from '../tables/tableConfigurationsPatient/tableConfigurationsPatient'
 
 const ConfigurationSystem = ({addClassContainer, isActive,idAdmin}) => {
     const [linkId, setLinkId] = useState(4)
@@ -38,7 +39,7 @@ const ConfigurationSystem = ({addClassContainer, isActive,idAdmin}) => {
 
             {
                 linkId == 0 ? (<TableConfigurationsOdont resetClick={resetClick}/>) :
-                linkId == 1 ? (<h1 onClick={resetClick}>Aqui se renderizan las configuraciones del sistema pacientes</h1>) :
+                linkId == 1 ? (<TableConfigurationsPatient resetClick={resetClick} />) :
                 linkId == 2 ? (<h1 onClick={resetClick}>Aqui se renderizan las configuraciones del sistema Configuraciones</h1>): 
                               ''
             }  

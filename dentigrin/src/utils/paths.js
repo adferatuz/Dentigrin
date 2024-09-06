@@ -29,6 +29,5 @@ export const listPathsNavbarAccount =[
 
 export const configurationPaths = {
     'odontologo': 'Configuraciones del sistema Odontologo',
-    'paciente': 'Configuraciones del sistema Pacientes',
-    'configuraciones': 'Configuraciones del sistema Politicas de Seguridad'
+    'paciente': 'Configuraciones del sistema Pacientes'
 }
