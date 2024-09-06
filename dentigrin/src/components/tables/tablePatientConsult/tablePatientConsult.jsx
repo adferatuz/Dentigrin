@@ -23,8 +23,13 @@ const TablePatientConsult = ({rol}) => {
                     <tr>
                         {
                             nombreColumnas.map((title, index) => (
-                                    <th id={ title === 'Acciones' ? 'container-btns' : ''} key={index}>{title}</th> 
-                        ))}
+                                    <th 
+                                        id={ title === 'Acciones' ? 'container-btns' : ''} 
+                                        key={index}>
+                                            {title}
+                                    </th> 
+                        ))
+                        }
                     </tr>
                 </thead>
                 <tbody>                    
