@@ -2,9 +2,8 @@ const User = require('@models/usuario/user');
 
 exports.createUser = async(req, res) => {
     try {
-
-      
-        res.status(201).json({user: 'esta respondiendo correctamente registrando'});
+        const nuevoUsuario = await User.create(req.body)
+        res.status(201).json(nuevoUsuario);
       } catch (error) {
         res.status(400).json({ message: error.message });
       }

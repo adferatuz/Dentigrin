@@ -2,35 +2,47 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('@config/db');
 const Usuario = require('@models/usuario/user');
 
-const Administrador = sequelize.define('Administrador', {
-    id_administrador: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    id_usuario: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: Usuario,
-            key: 'id_usuario'
-        }
-    },
-    nombres: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    apellidos: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    numero_contacto: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }    
+const Administrador = sequelize.define('administradores', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            comment: 'Este es un nombre de columna que contiene la llave primaria'
+        },
+        nombre: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'nombres',
+            comment: 'Este es un nombre de columna que contiene los nombres'
+        },
+        apellido: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'apellidos',
+            comment: 'Este es un nombre de columna que contiene los apellidos'
+        },
+        numeroContacto: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'numero_contacto',
+            comment: 'Este es un nombre de columna que contiene el numero de contacto'
+        }    
 
-},{
-    tableName: 'administradores'
-})
+    },
+    {
+        timestamps: true,
+        createdAt: 'fecha_creacion',
+        updatedAt: 'fecha_actualizacion',
+    }
+);
+
+Usuario.hasOne(Administrador, {
+    onDelete: 'RESTRICT',
+    onUpdate: 'RESTRICT',
+    foreignKey: 'id_usuario',
+    sourceKey: 'id'
+});
+
+Administrador.belongsTo(Usuario, { foreignKey: 'id_usuario', targetId: 'id'});
 
 module.exports = Administrador;

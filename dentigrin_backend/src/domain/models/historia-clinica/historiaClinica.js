@@ -2,35 +2,47 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('@config/db');
 const Paciente = require('@models/paciente/paciente');
 
-const HistoriaClinica = sequelize.define('HistoriaClinica', {
-    id_historia_clinica: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    id_paciente: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: Paciente,
-            key: 'id_paciente'
-        }
-    },
-    fecha_consulta: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    diagnostico: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    tratamientos: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }   
+const HistoriaClinica = sequelize.define('historias_clinicas', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            comment: 'Este es un nombre de columna que contiene la llave primaria'
+        },
+        fechaConsulta: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'fecha_de_consulta',
+            comment: 'Este es un nombre de columna que contiene la fecha de la consulta'
+        },
+        diagnostico: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'diagnostico',
+            comment: 'Este es un nombre de columna que contiene el diagnostico'
+        },
+        tratamientos: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'tratamientos',
+            comment: 'Este es un nombre de columna que contiene el tratamiento'
+        }   
 
-},{
-    tableName: 'historias_clinicas'
+    },
+    {
+        timestamps: true,
+        createdAt: 'fecha_creacion',
+        updatedAt: 'fecha_actualizacion'
+    }
+);
+
+Paciente.hasOne(HistoriaClinica, {
+    onDelete: 'RESTRICT',
+    onUpdate: 'RESTRICT',
+    foreignKey: 'id_paciente',
+    sourceKey: 'id'
 });
+
+HistoriaClinica.belongsTo(Paciente, { foreignKey: 'id_paciente', targetId: 'id'});
 
 module.exports = HistoriaClinica;

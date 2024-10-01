@@ -1,50 +1,45 @@
-const { DataTypes, NOW } = require('sequelize');
+const { DataTypes} = require('sequelize');
 const sequelize = require('@config/db');
-const { toDefaultValue } = require('sequelize/lib/utils');
 
-const Usuario = sequelize.define('Usuario', {
-    id_usuario: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    rol: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    fecha_creacion: {
-        type:  DataTypes.DATE,
-        defaultValue: NOW
-        
-    },
-    fecha_actualizacion: {
-        type:  DataTypes.DATE,
-        defaultValue: NOW
-        
-    }   
-
-},{
-    tableName: 'usuarios',
-    timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion',
-    hooks: {
-        beforeCreate: (usuario) => {
-            usuario.fecha_creacion = new Date();
-            usuario.fecha_actualizacion = new Date();
+const Usuario = sequelize.define('usuarios', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            field: 'id_usuario',
+            comment: 'Este es un nombre de columna que contiene la llave primaria'
         },
-        beforeUpdate: (usuario) => {
-            usuario.fecha_actualizacion = new Date();
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'username',
+            comment: 'Este es un nombre de columna que contiene los alias'
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field : 'email',
+            unique : true,
+            comment: 'Este es un nombre de columna que contiene el correo electronico'
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field : 'contraseña',
+            comment: 'Este es un nombre de columna que contiene la contraseña'
+        },
+        rol: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field : 'rol',
+            comment: 'Este es un nombre de columna que contiene los roles'
         }
+    }, 
+    {
+        timestamps: true,
+        createdAt: 'fecha_creacion',
+        updatedAt: 'fecha_actualizacion',
     }
-});
+);
 
 module.exports = Usuario;

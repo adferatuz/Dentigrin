@@ -2,7 +2,7 @@ import './styles.css'
 
 export default function Inicio(props) {
     return(
-        <div className="home">
+        <div  className="home">
             <div className="card-presentation">
                 <div>
                     <h2>Tu sonrisa a un solo click</h2>
