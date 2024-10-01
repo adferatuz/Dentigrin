@@ -6,7 +6,7 @@ const app = require('./app.js')
 sequelize.authenticate()
   .then(() => {
     console.log("Conectado a la base de datos");
-    return sequelize.sync({force: true});
+    return sequelize.sync(/*{force: true}*/);
   })
   .then(() => {
     app.listen(3000, () => {

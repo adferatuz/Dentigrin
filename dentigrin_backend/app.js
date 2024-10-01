@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const routesContactos = require('@routes/routesContacto');
+const routesCitas = require('@routes/cita.routes.js');
 const routesPacientes = require('@routes/routesPacientes');
 const routesOdontologos = require('@routes/routesOdontologos');
 const routesAdministrador = require('@routes/routesAdministrador')
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use('/', routeServer);
 app.use('/', routesContactos);
+app.use('/', routesCitas);
 app.use('/', routesPacientes);
 app.use('/', routesOdontologos);
 app.use('/', routesAdministrador);

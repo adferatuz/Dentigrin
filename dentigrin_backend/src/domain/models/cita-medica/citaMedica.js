@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('@config/db');
+const Paciente = require('@models/paciente/paciente')
+const Odontologo = require('@models/odontologo/odontologo')
 
 const Cita = sequelize.define('citas', 
     {
@@ -40,4 +42,7 @@ const Cita = sequelize.define('citas',
         updatedAt: 'fecha_actualizacion',
     }
 );
+
+Paciente.belongsToMany(Odontologo, { through: Cita, foreignKey: 'id_paciente', allowNull: false, });
+Odontologo.belongsToMany(Paciente, { through: Cita, foreignKey: 'id_odontologo', allowNull: false,});
 module.exports = Cita;

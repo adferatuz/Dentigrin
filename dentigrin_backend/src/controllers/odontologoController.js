@@ -11,3 +11,14 @@ exports.getOdontologos = async(req, res)=>{
     }
 
 }
+
+// Crear un nuevo Odontologo
+exports.createOdontologo = async (req, res) => {
+    try {
+      const nuevoOdontologo = await Odontologo.create(req.body);
+      res.status(201).json(nuevoOdontologo);
+      console.log(nuevoOdontologo.toJSON())
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
