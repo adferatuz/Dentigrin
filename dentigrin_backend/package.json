@@ -4,13 +4,14 @@
   "description": "backend del proyecto dentigrin del SENA",
   "main": "index.js",
   "scripts": {
-    "dev":"node --watch index.js",
+    "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Grupo # 4 de la ficha 2834902",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "joi": "^17.13.3",
     "module-alias": "^2.2.3",
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
@@ -33,5 +34,4 @@
     "@validations": "src/domain/validations",
     "@test": "test"
   }
-
 }
