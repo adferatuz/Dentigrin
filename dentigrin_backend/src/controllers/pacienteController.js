@@ -1,4 +1,6 @@
 const Paciente = require('@models/paciente/paciente');
+const pacienteService = require('@services/pacienteService');
+const { validatePaciente } = require('../domain/validations/pacienteValidation');
 
 //Obtener todos los pacientes
 exports.getPacientes = async (req, res) => {
@@ -28,10 +30,22 @@ exports.getPacienteById = async (req, res) => {
   // Crear un nuevo paciente
   exports.createPaciente = async (req, res) => {
     try {
-      const nuevoPaciente = await Paciente.create(req.body);
+
+      //Validacion de datos que llegan desde el lado del cliente.
+      const { error } = validatePaciente(req.body);
+      if (error) {
+        return res.status(400).json({message: error.details[0].message});
+      }
+
+      //Llamada al servicio para crear un nuevo paciente
+      const nuevoPaciente = await pacienteService.createPaciente(req.body);
+
+      //Respuesta al lado del cliente
       res.status(201).json(nuevoPaciente);
-      console.log(nuevoPaciente.toJSON())
+
     } catch (error) {
+      
+      //Manejador de errores
       res.status(400).json({ message: error.message });
     }
   };
