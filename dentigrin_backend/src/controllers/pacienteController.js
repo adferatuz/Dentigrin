@@ -1,4 +1,3 @@
-const Paciente = require('@models/paciente/paciente');
 const pacienteService = require('@services/pacienteService');
 const { validatePaciente, validatePacienteId } = require('../domain/validations/pacienteValidation');
 
