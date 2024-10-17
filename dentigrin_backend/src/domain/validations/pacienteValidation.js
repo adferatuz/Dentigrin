@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const pacienteSchema = Joi.object({
-  id_usuario: Joi.number().integer()/*.required()*/,
+  id_usuario: Joi.string()/*.required()*/,
   nombre: Joi.string()/*.required()*/,
   apellido: Joi.string()/*.required()*/,
   tipoIdentificacion: Joi.string()/*.required()*/,

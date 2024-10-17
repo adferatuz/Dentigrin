@@ -36,6 +36,7 @@ Dentigrin es una solución integral para la administración de clínicas odontol
     ✨ "pg-hstore": "^2.3.4"</br>
     ✨ "sequelize": "^6.37.3"</br>
     ✨ "sequelize-cli": "^6.6.2"</br>
+    ✨ "bcrypt": "^5.1.1"</br>
         
 
     <h4>Dependencias de desarrollo:</h4>
