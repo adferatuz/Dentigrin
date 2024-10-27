@@ -1,17 +1,13 @@
-const User = require('@models/usuario/user');
+const userRepository = require('./userRepository');
 
 exports.createUser = async (data) => {
     try {
-
+       
         //validar si ya  existe un usuario con el mismo username
-        const user = await User.findOne({where: { username: data.username }});
-        if (user) {
-            throw new Error('El usuario ya existe');
-        }
+        const user = await userRepository.create(data);
 
-        //crear un nuevo usuario
-        const nuevoUsuario = await User.create(data);
-        return nuevoUsuario;
+        // devolver el  usuario creado
+        return user;
 
     } catch (error) {
 

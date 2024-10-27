@@ -1,14 +1,8 @@
-const {validateUser, validateUserId, validateUsername, validatePassword} = require('./userValidation')
+//const {validateUser, validateUserId, validateUsername, validatePassword} = require('./userValidation')
 const userService = require('./userService');
 
 exports.createUser = async(req, res) => {
   try {
-
-      //Validacion de datos que llegan desde el lado del cliente.
-      const { error } = validateUser(req.body);
-      if (error) {
-        return res.status(400).json({message: error.details[0].message});
-      }
 
       //Llamada al servicio para crear un nuevo usuario
       const nuevoUsuario = await userService.createUser(req.body)
