@@ -47,12 +47,6 @@ exports.getPacienteById = async (req, res) => {
   exports.createPaciente = async (req, res) => {
     try {
 
-      //Validacion de datos que llegan desde el lado del cliente.
-      const { error } = validatePaciente(req.body);
-      if (error) {
-        return res.status(400).json({message: error.details[0].message});
-      }
-
       //Llamada al servicio para crear un nuevo paciente
       const nuevoPaciente = await pacienteService.createPaciente(req.body);
 

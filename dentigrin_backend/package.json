@@ -34,6 +34,7 @@
     "@models": "src/domain/models",
     "@services": "src/domain/services",
     "@validations": "src/domain/validations",
+    "@repository": "src/domain/repository",
     "@test": "test"
   }
 }

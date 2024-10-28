@@ -1,10 +1,16 @@
 const Paciente = require('@models/paciente/paciente');
+const pacienteRepository = require('@repository/pacienteRepository');
 
 //Servicio para crear una persistencia de datos del ORM Paciente.
 exports.createPaciente = async (data) => {
     try {
-        const nuevoPaciente = await Paciente.create(data);
+
+        //Llamada al  repositorio para crear un nuevo paciente.
+        const nuevoPaciente = await pacienteRepository.createPaciente(data);
+
+        //Si el paciente se creo correctamente, se devuelve el id del paciente creado.
         return nuevoPaciente;
+        
     } catch (error) {
         throw new Error(`Error al crear el paciente: ${error.message}`);       
     }
@@ -13,7 +19,7 @@ exports.createPaciente = async (data) => {
 //Servicio para listar todos los pacientes de la base de datos.
 exports.getPacientes = async () => {
     try {
-        const pacientes = await Paciente.findAll();
+        const pacientes = await pacienteRepository.getAllPacientes();
         return pacientes;
     } catch (error) {
         throw new Error(`Error listar pacientes: ${error.message}`); 

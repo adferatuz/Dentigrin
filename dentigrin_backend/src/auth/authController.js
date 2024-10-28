@@ -1,4 +1,3 @@
-//const {validateUser, validateUserId, validateUsername, validatePassword} = require('./userValidation')
 const userService = require('./userService');
 
 exports.createUser = async(req, res) => {

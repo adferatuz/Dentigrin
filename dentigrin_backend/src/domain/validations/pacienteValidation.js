@@ -17,7 +17,7 @@ const pacienteSchema = Joi.object({
   direccionResidencia: Joi.string()/*.required()*/,
 });
 
-const idPacienteSchema = Joi.number().integer().required();
+const idPacienteSchema = Joi.string().required();
 
 exports.validatePaciente = (data) => pacienteSchema.validate(data);
 exports.validatePacienteId = (id) => idPacienteSchema.validate(id);
