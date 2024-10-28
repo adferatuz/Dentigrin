@@ -29,8 +29,13 @@ exports.getPacientes = async () => {
 //Servicio para buscar un paciente por id.
 exports.getPacienteById = async (id) => {
     try {
-        const paciente = await Paciente.findByPk(id);
+
+        //Llamada al repositorio para buscar un paciente por id.
+        const paciente = await pacienteRepository.getPaciente(id);
+
+        // Si el paciente existe, se devuelve el paciente.
         return paciente;
+
     } catch (error) {
         throw new Error(`Error al encontrar el paciente: ${error.message}`);
     }
@@ -39,10 +44,13 @@ exports.getPacienteById = async (id) => {
 //Servicio para actualizar un paciente
 exports.updatePaciente = async (data, id) => {
     try {
-        const [updated] = await Paciente.update(data, {
-            where: { id: id }
-          });
-        return updated;
+
+        // Llamada al repositorio para actualizar un paciente.
+        const paciente = await pacienteRepository.updatePaciente(data, id);
+
+        //se devuelve el paciente actualizado.
+        return paciente;
+
     } catch (error) {
         throw new Error(`Error al encontrar el paciente: ${error.message}`);
     }
@@ -51,10 +59,13 @@ exports.updatePaciente = async (data, id) => {
 //Servicio para  eliminar un paciente
 exports.deletePaciente = async (id) => {
     try {
-        const pacienteEliminado = await Paciente.destroy({
-            where: { id: id }
-          });
+
+        //Llamada al repositorio para eliminar un paciente.
+        const pacienteEliminado = await pacienteRepository.deletePaciente(id)
+
+        // Se le asigna 1 si el paciente se elimino o  0 si no se elimino.
         return  pacienteEliminado;
+
     } catch (error) {
         throw new Error(`Error al eliminar el paciente: ${error.message}`);
         

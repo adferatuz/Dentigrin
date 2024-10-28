@@ -64,20 +64,11 @@ exports.getPacienteById = async (req, res) => {
   exports.updatePaciente = async (req, res) => {
     try {
 
-      //Validacion de datos que llegan desde el lado del cliente.
-      const { error } = validatePaciente(req.body);
-      if (error) {
-        return res.status(400).json({message: error.details[0].message});
-      }
-
       //Llamada al servicio para actualizar un paciente
       const actualizado = await pacienteService.updatePaciente(req.body, req.params.id);
-      if (actualizado) {
-        const pacienteActualizado = await pacienteService.getPacienteById(req.params.id);
-        res.status(200).json(pacienteActualizado);
-      } else {
-        res.status(404).json({ message: 'Paciente no encontrado' });
-      }
+
+      //Respuesta al lado del cliente
+      res.status(200).json(actualizado);
 
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -87,20 +78,19 @@ exports.getPacienteById = async (req, res) => {
   // Eliminar un paciente
   exports.deletePaciente = async (req, res) => {
     try {
-
-      //Validacion de datos que llegan desde el lado del cliente.
-      const {error} = validatePacienteId( req.params.id );
-      if (error) {
-        return res.status(404).json({message: error.details[0].message});
-      }
       
       //Llamada al servicio para eliminar un paciente
       const deleted = await pacienteService.deletePaciente(req.params.id);
+
+      //Respuesta al lado del cliente; si deleted es 1 el paciente se ha eliminado
       if (deleted) {
         res.status(204).json({ message: 'Paciente eliminado' });
+
+      //Si deleted es 0 no se elimina el paciente
       } else {
         res.status(404).json({ message: 'Paciente no encontrado' });
       }
+      
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
