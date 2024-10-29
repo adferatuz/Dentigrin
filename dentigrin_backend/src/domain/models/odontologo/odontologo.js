@@ -4,9 +4,9 @@ const Usuario = require('@models/usuario/user');
 
 const Odontologo = sequelize.define('odontologos', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true,
+            defaultValue:  DataTypes.UUIDV4,
             comment: 'Este es un nombre de columna que contiene la llave primaria'
         },
         nombre: {

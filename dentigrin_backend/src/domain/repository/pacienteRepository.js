@@ -3,13 +3,12 @@ const { validatePaciente, validatePacienteId } = require('@validations/pacienteV
 
 class PacienteRepository {
 
-    // metodo para obtener todos los pacientes
-    static async getAllPacientes () {
-        const pacientes = Paciente.findAll();
-        return pacientes;
+    //metodo para obtener todos los pacientes
+    static async getAllPacientes () {        
+        return await Paciente.findAll();
     }
 
-    // metodo para crear un nuevo perfil de paciente
+    //metodo para crear un nuevo perfil de paciente
     static async createPaciente (data){
 
        //Validacion de datos que llegan desde el lado del cliente.
@@ -25,7 +24,7 @@ class PacienteRepository {
       return nuevoPaciente.id;
     }
 
-    //  metodo para obtener un paciente por id
+    //metodo para obtener un paciente por id
     static async getPaciente (id){
 
       //Validacion de datos que llegan desde el lado del cliente.
@@ -47,7 +46,7 @@ class PacienteRepository {
       }
     }
 
-    //  metodo para actualizar un paciente
+    //metodo para actualizar un paciente
     static async updatePaciente (data,id){
 
       //Validacion de datos que llegan desde el lado del cliente.
@@ -70,6 +69,7 @@ class PacienteRepository {
 
     }
 
+    //metodo para eliminar un paciente
     static async deletePaciente(id) {
 
       //Validacion de datos que llegan desde el lado del cliente.
@@ -85,7 +85,7 @@ class PacienteRepository {
 
       // retornamos 1 si el paciente se elimino y  0 si no se elimino
       return pacienteEliminado;
-      
+
     }
 }
 
