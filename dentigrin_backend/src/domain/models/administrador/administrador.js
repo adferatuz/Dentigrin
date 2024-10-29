@@ -4,9 +4,9 @@ const Usuario = require('@models/usuario/user');
 
 const Administrador = sequelize.define('administradores', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true,
+            defaultValue:  DataTypes.UUIDV4,
             comment: 'Este es un nombre de columna que contiene la llave primaria'
         },
         nombre: {

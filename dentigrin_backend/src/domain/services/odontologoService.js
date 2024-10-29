@@ -1,4 +1,3 @@
-const Odontologo = require('@models/odontologo/odontologo');
 const odontologoRepository = require('@repository/odontologoRepository');
 
 // Servicio para  obtener los odontólogos
