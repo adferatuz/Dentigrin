@@ -42,6 +42,42 @@ class AdministradorRepository {
 
     }
 
+    //Metodo para  actualizar un administrador
+    static async updateAdministrador (id, data) {
+
+        // validacion de datos que llegan
+        const { error } = validateAdministrador(data);
+        if (error) {
+            return res.status(400).json({ message: error.details[0].message });
+        }
+
+        // Actualizar un  administrador en la base de datos
+        await Administrador.update(data, {
+            where: { id: id }
+        });
+        
+        // Se devuelve el administrador actualizado
+        return await this.getAdministrador(id);
+
+    }
+
+    //Metodo  para eliminar un administrador
+    static async deleteAdministrador (id) {
+
+        // validacion de los datos  que llegan
+        const {error} =  validateAdministradorId(id);
+        if (error) {
+            throw new Error("Error ");            
+        }
+
+        //  Eliminar un administrador de la base de datos
+        const administrador = await Administrador.destroy({ where : { id: id } });
+
+        // devolver  el administrador eliminado
+        return administrador;
+
+    }
+
 }
 
 module.exports = AdministradorRepository;
