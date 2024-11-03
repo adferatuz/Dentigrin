@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { formatDate } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -8,27 +8,44 @@ import {INITIAL_EVENTS, createEventId } from '../../utils/event-utils'
 import './styles.css'
 
 export default function Calendar(){
-    const [weekendsVisible, setWeekendsVisible] = useState(true)
+  const [weekendsVisible, setWeekendsVisible] = useState(true)
   const [currentEvents, setCurrentEvents] = useState([])
+
+  useEffect(() => {},[])
 
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible)
   }
 
+  async function saveEventsToDataBase(events){
+
+  } 
+
   function handleDateSelect(selectInfo) {
-    let title = prompt('Please enter a new title for your event')
+    let title = prompt('Por favor ingrese el motivo del evento')
+    /* let fechaConsulta = prompt('Ingrese la fecha en el siguiente formato: DD-MM-YYYY')
+    let horaConsulta = prompt('ingrese la hora')
+    let odontologo = prompt('nombre del odontologo') */
     let calendarApi = selectInfo.view.calendar
 
     calendarApi.unselect() // clear date selection
+    let id = createEventId();
 
     if (title) {
       calendarApi.addEvent({
-        id: createEventId(),
+        id: id,
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         allDay: selectInfo.allDay
       })
+
+      console.log(`
+        Este es el valor de id: ${id}, 
+        Este es el valor de start: ${selectInfo.startStr},
+        Este es el valor de title: ${title},
+        Este es el valor de end: ${selectInfo.endStr},
+        Este es el valor de allDay: ${selectInfo.allDay}`)
     }
   }
 
@@ -68,11 +85,11 @@ export default function Calendar(){
           eventContent={renderEventContent} // custom render function
           eventClick={handleEventClick}
           eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-          /* you can update a remote database when these fire:
-          eventAdd={function(){}}
-          eventChange={function(){}}
-          eventRemove={function(){}}
-          */
+        /* you can update a remote database when these fire:
+        eventAdd={function(){}}
+        eventChange={function(){}}
+        eventRemove={function(){}}
+        */
         />
       </div>
     </div>

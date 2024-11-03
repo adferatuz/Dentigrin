@@ -1,4 +1,3 @@
-const Paciente = require('@models/paciente/paciente');
 const pacienteRepository = require('@repository/pacienteRepository');
 
 //Servicio para crear una persistencia de datos del ORM Paciente.
@@ -70,5 +69,15 @@ exports.deletePaciente = async (id) => {
         throw new Error(`Error al eliminar el paciente: ${error.message}`);
         
     }
+}
+
+//Servicio para obtener un paciente por tipo de identificacion y numero de identificacion
+exports.getPacienteByIdentification = async  (data) => {
+
+    //Llamado al repositorio para  buscar un paciente por tipo de identificacion y numero de identificacion.
+    const  paciente = await pacienteRepository.getPacienteByIdentification(data);
+
+    // Si el paciente existe se devuelve el paciente.
+    return paciente;
 }
 

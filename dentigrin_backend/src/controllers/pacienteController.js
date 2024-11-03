@@ -88,3 +88,19 @@ exports.deletePaciente = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+//Obtener el paciente por tipo de identificacion y numero de identificacion
+exports.getPacienteByIdentification = async (req, res) => {
+  try {
+
+    // Llamada al servicio para obtener el paciente por tipo de identificacion y numero de identificacion
+    const paciente = await pacienteService.getPacienteByIdentification(req.body);
+
+    // Respuesta al lado del cliente
+    res.status(200).json(paciente);
+    
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+    
+  }
+}

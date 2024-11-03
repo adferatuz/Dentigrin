@@ -87,6 +87,39 @@ class PacienteRepository {
       return pacienteEliminado;
 
     }
+
+    //metodo para  buscar un paciente por identificacion
+    static async getPacienteByIdentification(data){
+
+      // Validacion de datos que llegan desde el lado del cliente.
+      const {error} = validatePaciente(data)
+      if (error) {
+        throw new Error("Error  en la validacion de datos", error);
+        ;                     
+      }       
+
+      //  Buscar paciente por tipo de identificacion y numero de identificacion
+      const paciente = await Paciente.findOne({
+        where: {
+          tipoIdentificacion :  data.tipoIdentificacion,
+          numeroIdentificacion : data.numeroIdentificacion
+        }
+      });
+
+      // respuesta si se encuentra resultado en la base de datos
+      if (paciente) {
+        const  respuesta = {
+          idPaciente : paciente.id,
+          nombre : paciente.nombre,
+          apellido :  paciente.apellido
+        }
+
+        return respuesta;
+      }else{
+        throw new Error("No se encontro el paciente");       
+      }
+    }
+
 }
 
 module.exports = PacienteRepository;

@@ -4,9 +4,9 @@ const Paciente = require('@models/paciente/paciente');
 
 const HistoriaClinica = sequelize.define('historias_clinicas', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true,
+            defaultValue:  DataTypes.UUIDV4,
             comment: 'Este es un nombre de columna que contiene la llave primaria'
         },
         fechaConsulta: {
