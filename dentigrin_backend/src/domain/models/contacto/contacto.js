@@ -4,9 +4,9 @@ const sequelize = require('@config/db');
 const Contacto = sequelize.define('contactos', 
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true,
+            defaultValue:  DataTypes.UUIDV4,
             comment: 'Este es un nombre de columna que contiene la llave primaria'
         },   
         direccion: {

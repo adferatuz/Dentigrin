@@ -23,9 +23,6 @@ export default function Calendar(){
 
   function handleDateSelect(selectInfo) {
     let title = prompt('Por favor ingrese el motivo del evento')
-    /* let fechaConsulta = prompt('Ingrese la fecha en el siguiente formato: DD-MM-YYYY')
-    let horaConsulta = prompt('ingrese la hora')
-    let odontologo = prompt('nombre del odontologo') */
     let calendarApi = selectInfo.view.calendar
 
     calendarApi.unselect() // clear date selection
@@ -52,6 +49,7 @@ export default function Calendar(){
   function handleEventClick(clickInfo) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove()
+      console.log('Aqui se envia la peticion para eliminar eventos de la base de datos')
     }
   }
 
@@ -75,7 +73,7 @@ export default function Calendar(){
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
           initialView='dayGridMonth'
-          editable={true}
+          editable={false}/*Aqui se pueden editar para arrastrar y soltar los eventos*/
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
