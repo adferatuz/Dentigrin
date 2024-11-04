@@ -23,6 +23,8 @@ export default function Calendar(){
 
   function handleDateSelect(selectInfo) {
     let title = prompt('Por favor ingrese el motivo del evento')
+    let especializacion = prompt('Por favor ingrese una de la siguientes especializaciones: PERIODONCIA, PROSTODONCIA, ODONTOLOGIA ESTETICA, ENDODONCIA');
+
     let calendarApi = selectInfo.view.calendar
 
     calendarApi.unselect() // clear date selection
@@ -42,7 +44,8 @@ export default function Calendar(){
         Este es el valor de start: ${selectInfo.startStr},
         Este es el valor de title: ${title},
         Este es el valor de end: ${selectInfo.endStr},
-        Este es el valor de allDay: ${selectInfo.allDay}`)
+        Este es el valor de allDay: ${selectInfo.allDay}
+        Este es el valor de especializacion: ${especializacion}`)
     }
   }
 

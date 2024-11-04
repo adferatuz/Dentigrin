@@ -9,24 +9,42 @@ exports.getAllCitas  = async () => {
 }
 
 // Crear un nuevo registro de citas en la base de datos
-exports.createCita = async (data) => {
-
-    // Conversion de datos para enviar al repositorio; posicion [0] = nombre medico,
-    // posicion [1] = hora consulta y posicion [2] = fecha consulta.    
-    const citaString = data["nueva-cita"];
-    const citaArray = citaString.split(",");
-
-    // Serializacion de datos
-    const cita = {
-        "odontologo": citaArray[0],
-        "horaConsulta": citaArray[1],
-        "fechaConsulta": citaArray[2],
-        "motivo": "",
-        "id_paciente": "",
-        "id_odontologo":  "",        
-    }
+exports.programarCita = async (data) => {
 
     //  Llamado al repositorio para crear un nuevo registro de citas
-    return await citaMedicaRepository.createCita(cita);
+    return await citaMedicaRepository.programarCita(data);
 
 }
+
+//Eliminar un registro  de citas en la base de datos
+exports.deleteCita = async (id) => {
+
+    //  Llamado al repositorio para eliminar un registro de citas
+    return await citaMedicaRepository.deleteCita(id);
+
+}
+
+//Obtener las citas disponibles en la base de datos
+exports.getCitasActivas = async () => {
+
+    //Llamado al repositorio para obtener las citas medicas
+    return await citaMedicaRepository.getCitasActivas();
+}
+
+//Agendar cita odontologica
+exports.scheduleDentalAppointment = async (data) => {
+
+    //Llamado al repositorio para agendar cita odontologica
+    return await citaMedicaRepository.scheduleDentalAppointment(data);
+
+}
+
+//Obtener citas agendadas
+exports.setAppointments = async (data) => {
+
+    //Llamado al repositorio para obtener citas agendadas
+    return await  citaMedicaRepository.setAppointments(data);
+
+}
+
+

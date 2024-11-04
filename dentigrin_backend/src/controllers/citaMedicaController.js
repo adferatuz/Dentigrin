@@ -23,22 +23,75 @@ exports.getAllCitas = async (req, res) => {
 };
 
 // Crear un nuevo registro de cita en la base de datos.
-exports.createCita = async (req, res) => {
+exports.programarCita = async (req, res) => {
     try {
         // Llamada al servicio para crear un nuevo registro de cita
-        const nuevaCita = await citaMedicaService.createCita(req.body);
+        const nuevaCita = await citaMedicaService.programarCita(req.body);
 
-        if(nuevacita){
-            //  Respuesta HTTP al lado del cliente
-        res.status(201).json(nuevaCita);
-        }else{
-            //  Respuesta HTTP al lado del cliente
-            res.status(400).json({message: 'No se pudo crear la cita'});
-        }
+        //Respuesta al lado del cliente
+        res.status(200).json(nuevaCita);
         
-
-        //console.log(nuevaCita.toJSON())
       } catch (error) {
         res.status(400).json({ message: error.message });
       }
+}
+
+//Eliminar un registro de una cita medica programada
+exports.deleteCita = async (req, res) => {
+    try {
+
+        //Llamado al servicio para  eliminar un registro de cita
+        const citaEliminada = await citaMedicaService.deleteCita(req.body.id);
+
+        //Respuesta  al lado del cliente
+        res.status(200).json(citaEliminada);
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });        
+    }
+}
+
+//Obtener citas disponibles en la programacion
+exports.getCitasActivas = async (req, res) => {
+    try {
+        
+        //Llamado al servicio para obtener citas disponibles
+        const citasActivas = await citaMedicaService.getCitasActivas();
+
+        //Respuesta http del  lado del cliente
+        res.status(200).json(citasActivas);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });        
+    }
+}
+
+//Agendar cita medica
+exports.scheduleDentalAppointment = async (req, res) => {
+    try {
+        
+        //Llamado al servicio para  agendar cita medica
+        const appointScheduled = await citaMedicaService.scheduleDentalAppointment(req.body);
+
+        //Respuesta del lado del cliente
+        res.status(200).json(appointScheduled);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });        
+    }
+}
+
+//obtener citas agendadas
+exports.setAppointments = async (req,res) => {
+    try {
+        
+        //Llamado al servicio para obtener citas agendadas
+        const appointments = await citaMedicaService.setAppointments(req.body);
+
+        //Respuesta http  del lado del cliente
+        res.status(200).json(appointments);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });        
+    }
 }
