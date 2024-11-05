@@ -7,7 +7,6 @@ const Usuario = sequelize.define('usuarios', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
-            //autoIncrement: true,
             defaultValue:  DataTypes.UUIDV4,
             field: 'id_usuario',
             comment: 'Este es un nombre de columna que contiene la llave primaria'

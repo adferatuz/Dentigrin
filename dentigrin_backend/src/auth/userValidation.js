@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const userSchema = Joi.object({
-    id: Joi.number().integer()/*.required()*/,
+    id: Joi.string()/*.required()*/,
     username: Joi.string()
         .alphanum()
         .min(3)
@@ -11,10 +11,10 @@ const userSchema = Joi.object({
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net']}}),
     password: Joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-    rol: Joi.string()/*.required()*/,
+    rol: Joi.string(),/* .required(), */
   });
 
-const idUserSchema = Joi.number().integer().required();
+const idUserSchema = Joi.string().required();
 const usernameSchema = Joi.string().required();
 const passwordSchema = Joi.string().required();
 
