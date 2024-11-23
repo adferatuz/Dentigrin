@@ -3,6 +3,9 @@ const pacienteService = require('@services/pacienteService');
 //Obtener todos los pacientes
 exports.getPacientes = async (req, res) => {
   try {
+    const {user} = req.session;
+
+    if(user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
 
     //Llamada al servicio para crear un nuevo paciente
     const pacientes = await pacienteService.getPacientes();
@@ -23,6 +26,10 @@ exports.getPacientes = async (req, res) => {
 exports.getPacienteById = async (req, res) => {
   try {
 
+    const {user} = req.session;
+
+    if(!user) return res.status(403).send('Acceso no autorizado');
+
     //Llamada al servicio para buscar un paciente por id.
     const paciente = await pacienteService.getPacienteById(req.params.id);
     if (paciente) {
@@ -39,6 +46,10 @@ exports.getPacienteById = async (req, res) => {
 // Crear un nuevo paciente
 exports.createPaciente = async (req, res) => {
   try {
+
+    const {user} = req.session;
+
+    if(user.rol === 'odontologo') return res.status(403).send('Acceso no autorizado');
 
     //Llamada al servicio para crear un nuevo paciente
     const nuevoPaciente = await pacienteService.createPaciente(req.body);
@@ -57,6 +68,10 @@ exports.createPaciente = async (req, res) => {
 exports.updatePaciente = async (req, res) => {
   try {
 
+    const {user} = req.session;
+
+    if(user.rol === 'odontologo') return res.status(403).send('Acceso no autorizado');
+
     //Llamada al servicio para actualizar un paciente
     const actualizado = await pacienteService.updatePaciente(req.body, req.params.id);
 
@@ -71,6 +86,10 @@ exports.updatePaciente = async (req, res) => {
 // Eliminar un paciente
 exports.deletePaciente = async (req, res) => {
   try {
+
+    const {user} = req.session;
+
+    if(user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
 
     //Llamada al servicio para eliminar un paciente
     const deleted = await pacienteService.deletePaciente(req.params.id);
@@ -92,6 +111,10 @@ exports.deletePaciente = async (req, res) => {
 //Obtener el paciente por tipo de identificacion y numero de identificacion
 exports.getPacienteByIdentification = async (req, res) => {
   try {
+
+    const {user} = req.session;
+
+    if(user.rol === 'paciente') return res.status(403).send('Acceso no autorizado');
 
     // Llamada al servicio para obtener el paciente por tipo de identificacion y numero de identificacion
     const paciente = await pacienteService.getPacienteByIdentification(req.body);

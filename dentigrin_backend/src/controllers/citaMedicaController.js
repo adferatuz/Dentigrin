@@ -3,6 +3,14 @@ const citaMedicaService = require('@services/citaMedicaService');
 //Obtener todas las citas agendadas
 exports.getAllCitas = async (req, res) => {
     try {
+        // Obtener el usuario que tiene el permiso para esta acción
+        const { user } = req.session;
+
+        // Si ahi ausencia de usuario
+        if (!user) return res.status(403).send('No tienes permiso para realizar esta acción');
+
+        // Si el usuario no tiene permiso para esta acción
+        if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
 
         // Llamada al servicio  para obtener todas las citas
         const citas = await citaMedicaService.getAllCitas();
@@ -22,15 +30,25 @@ exports.getAllCitas = async (req, res) => {
     }
 };
 
-// Crear un nuevo registro de cita en la base de datos.
+// Crear un nuevo registro de cita en el cronograma en la base de datos.
 exports.programarCita = async (req, res) => {
     try {
+
+        // Obtener el usuario que tiene el permiso para esta acción
+        const { user } = req.session;
+
+        // Si ahi ausencia de usuario
+        if (!user) return res.status(403).send('No tienes permiso para realizar esta acción');
+
+        // Si el usuario no tiene permiso para esta acción
+        if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
+
         // Llamada al servicio para crear un nuevo registro de cita
         const nuevaCita = await citaMedicaService.programarCita(req.body);
 
         //Respuesta al lado del cliente
         res.status(200).json(nuevaCita);
-        
+
       } catch (error) {
         res.status(400).json({ message: error.message });
       }
@@ -40,12 +58,21 @@ exports.programarCita = async (req, res) => {
 exports.deleteCita = async (req, res) => {
     try {
 
+        // Obtener el usuario que tiene el permiso para esta acción
+        const { user } = req.session;
+
+        // Si ahi ausencia de usuario
+        if (!user) return res.status(403).send('No tienes permiso para realizar esta acción');
+
+        // Si el usuario no tiene permiso para esta acción
+        if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
+
         //Llamado al servicio para  eliminar un registro de cita
         const citaEliminada = await citaMedicaService.deleteCita(req.body.id);
 
         //Respuesta  al lado del cliente
         res.status(200).json(citaEliminada);
-        
+
     } catch (error) {
         res.status(500).json({ message: error.message });        
     }
@@ -54,7 +81,16 @@ exports.deleteCita = async (req, res) => {
 //Obtener citas disponibles en la programacion
 exports.getCitasActivas = async (req, res) => {
     try {
-        
+
+        // Obtener el usuario que tiene el permiso para esta acción
+        const { user } = req.session;
+
+        // Si ahi ausencia de usuario
+        if (!user) return res.status(403).send('No tienes permiso para realizar esta acción');
+
+        // Si el usuario no tiene permiso para esta acción
+        //if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
+
         //Llamado al servicio para obtener citas disponibles
         const citasActivas = await citaMedicaService.getCitasActivas();
 
@@ -62,7 +98,7 @@ exports.getCitasActivas = async (req, res) => {
         res.status(200).json(citasActivas);
 
     } catch (error) {
-        res.status(500).json({ message: error.message });        
+        res.status(500).json({ message: error.message });
     }
 }
 

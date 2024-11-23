@@ -1,30 +1,40 @@
 const odontologoService = require('@services/odontologoService');
 
 //Obtener todos los odontologos
-exports.getOdontologos = async(req, res)=>{
-    try {
+exports.getOdontologos = async (req, res) => {
+  try {
 
-      //Servicio  para obtener todos los odontologos
-      const odontologos = await  odontologoService.getOdontologos();
+    // obtener el usuario autorizado para esta accion
+    const { user } = req.session;
+    //Validar que el usuario tenga permisos para realizar esta accion
+    if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
 
-      // Si hay odontologos
-      if(odontologos){
-        res.status(200).json(odontologos);
+    //Servicio  para obtener todos los odontologos
+    const odontologos = await odontologoService.getOdontologos();
+
+    // Si hay odontologos
+    if (odontologos) {
+      res.status(200).json(odontologos);
 
       // Si no hay odontologos
-      } else{
-        // Lanza una respuesta http 204 que significa no-content
-        res.status(204).json({ message: 'Aun no ahi Odontologos' });
-      }
-        
-    } catch (error) {
-      res.status(500).json({ message: error.message});
+    } else {
+      // Lanza una respuesta http 204 que significa no-content
+      res.status(204).json({ message: 'Aun no ahi Odontologos' });
     }
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 }
 
 // Crear un nuevo Odontologo
 exports.createOdontologo = async (req, res) => {
     try {
+
+      // obtener el usuario autorizado para esta accion
+      const { user } = req.session;
+      //Validar que el usuario tenga permisos para realizar esta accion
+      if (!user) return res.status(403).send('Acceso no autorizado');
 
       //Llamado al servicio  para crear un nuevo odontologo
       const nuevoOdontologo = await odontologoService.createOdontologo(req.body);
@@ -40,6 +50,11 @@ exports.createOdontologo = async (req, res) => {
 //Obtener  un odontologo por id
 exports.getOdontologoById = async (req, res) => {
   try {
+
+    // obtener el usuario autorizado para esta accion
+    const { user } = req.session;
+    //Validar que el usuario tenga permisos para realizar esta accion
+    if (!user) return res.status(403).send('Acceso no autorizado');
     
     //Llamado  al servicio  para obtener un odontologo por id
     const odontologo = await odontologoService.getOdontologoById(req.params.id);
@@ -60,6 +75,11 @@ exports.getOdontologoById = async (req, res) => {
 exports.updateOdontologo  = async (req, res) => {
   try {
 
+    // obtener el usuario autorizado para esta accion
+    const { user } = req.session;
+    //Validar que el usuario tenga permisos para realizar esta accion
+    if (!user) return res.status(403).send('Acceso no autorizado');
+
     // Llamado al servicio para actualizar un odontologo
     const actualizado = await odontologoService.updateOdontologo( req.body,req.params.id);
 
@@ -73,7 +93,12 @@ exports.updateOdontologo  = async (req, res) => {
 
 //Eliminar un odontologo
 exports.deleteOdontologo = async (req, res) => {
-  try {    
+  try {  
+    
+    // obtener el usuario autorizado para esta accion
+    const { user } = req.session;
+    //Validar que el usuario tenga permisos para realizar esta accion
+    if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
 
     //Llamado al servicio para eliminar un odontologo
     const odontologoElimindado =  await odontologoService.deleteOdontologo(req.params.id);

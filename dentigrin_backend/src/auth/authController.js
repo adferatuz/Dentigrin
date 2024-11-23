@@ -25,7 +25,7 @@ exports.initLoguin = async(req, res) => {
 
         //Generando el token de inicio de sesion con jwt
         const token = jwt.sign(
-          { id: user.id, email: user.email }, 
+          { id: user.id_usuario, email: user.email, rol: user.rol }, 
           SECRET_JWT_KEY,
           {expiresIn: '1h'});
 
@@ -57,13 +57,11 @@ exports.logout = async(req, res) => {
 
 exports.protected = async(req, res) => {
     try {
-        //const {user} = req.session
-        const token = req.cookies['access_token'];
-        if(!token) return res.status(403).send('Acceso no autorizado');
-        
-        const data = jwt.verify(token, SECRET_JWT_KEY);
+        const {user} = req.session
 
-        res.status(200).json({message: 'Acceso autorizado', data});
+        if(!user) return res.status(403).send('Acceso no autorizado');
+
+        res.status(200).json({message: 'Acceso autorizado', user});
       } catch (error) {
         res.status(400).json({ message: error.message });
       }

@@ -106,13 +106,11 @@ class CitaMedicaRepository {
         const appointScheduled = await Cita.update(data,{where: {id: data.id}});
 
         // Si la  cita se programo
-        if (appointScheduled) {
+        if (appointScheduled === 0) {
             return `La cita con el id ${data.id} fue programada con exito`;            
         }else{
             return `Error al programar la cita con el id ${data.id}`;
         }
-
-
     }
 
     //Metodo para obtener las citas agendadas

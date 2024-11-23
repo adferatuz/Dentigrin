@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const routesContactos = require('@routes/contacto.routes.js');
 const routesCitas = require('@routes/cita.routes.js');
@@ -11,18 +13,22 @@ const routeServer = require('@routes/server.routes.js');
 const routeHistoriaClinica = require('@routes/historiaClinica.routes.js');
 const routerAuth = require('@routes/auth.routes.js');
 const { SECRET_JWT_KEY } = require('@config/config.js');
+const { CORS_OPTIONS } = require('@config/config.js');
 
-
+app.use(cors(CORS_OPTIONS))
 app.use(express.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
     let token = req.cookies.access_token;
-    req.session = {user: null};
+    req.session = { user: null };
 
     try {
         const data = jwt.verify(token, SECRET_JWT_KEY);
-        req.session.user = data;        
-    } catch {}
+        req.session.user = data;
+        
+    } catch (error){
+        req.session.user = null
+    }
 
     next();
 })
