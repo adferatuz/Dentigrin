@@ -13,7 +13,9 @@ class AdministradorRepository {
         }
 
         // Se devuelve un administrador de la base de datos
-        return await Administrador.findByPk(id);
+        return await Administrador.findOne({
+            where: { id_usuario: id }
+        });
 
     }
 

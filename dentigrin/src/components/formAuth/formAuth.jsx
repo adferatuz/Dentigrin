@@ -1,26 +1,42 @@
-import { useState, useEffect, useRef } from 'react'
 import Button from '../button/button.jsx'
 import './styles.css'
-import { useLocation } from 'react-router-dom';
+import apiService from "../../services/apiService";
+
+import { useState, useEffect, useRef } from 'react'
+import { json, useLocation } from 'react-router-dom';
 
 export default function FormAuth ({handleSesionClick,showLink, title}) {
 
-    const [isActive, setIsActive] = useState(true)
-    const formRef = useRef(null)
-    const location = useLocation()
+    // Manejador de estado para los estilos del formulario
+    const [isActive, setIsActive] = useState(true);
 
+    const formRef = useRef(null);
+    const location = useLocation();
+
+    //Mostrar el link del formulario
     useEffect(()=>{
         setIsActive(showLink)
-    },[])    
+    },[])     
+   
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(formRef.current);
+        const formValues = Object.fromEntries(formData.entries()); 
+        //console.log(JSON.stringify(formValues))       
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const formData = new FormData(formRef.current);
-      const formValues = Object.fromEntries(formData.entries());
-  
-      if(location.pathname == '/login'){
-        handleSesionClick(formValues)
-      }
+        if (location.pathname == '/login') {
+            handleSesionClick(formValues)
+        }else{
+            formValues.rol = 'paciente';
+            const response = await apiService.post('register', formValues);
+            alert(`El usuario se a guardado exitosamente`); // Notifica al usuario
+            clearForm();
+        }
+    };
+
+    // Función para limpiar los inputs del formulario
+    const clearForm = () => {
+        formRef.current.reset();
     };
 
     return(
@@ -39,7 +55,8 @@ export default function FormAuth ({handleSesionClick,showLink, title}) {
                             id='username'
                             name='username' 
                             autoComplete="username"
-                            placeholder='Ingrese el nombre de Usuario' 
+                            placeholder='Ingrese el nombre de Usuario'
+                            required
                         />
                         <label htmlFor="email" title='email'>Correo electronico</label>
                         <input 
@@ -47,7 +64,8 @@ export default function FormAuth ({handleSesionClick,showLink, title}) {
                             id='email'
                             name='email' 
                             autoComplete="email"
-                            placeholder='Ingrese el correo electronico' 
+                            placeholder='Ingrese el correo electronico'
+                            required 
                         />
                         <label htmlFor="password" title='password' >Contraseña</label>
                         <input 
@@ -55,7 +73,8 @@ export default function FormAuth ({handleSesionClick,showLink, title}) {
                             id='password'
                             name='password' 
                             autoComplete="current-password"
-                            placeholder='Ingrese la contraseña' 
+                            placeholder='Ingrese la contraseña'
+                            required 
                         />
                         <div>
                             {

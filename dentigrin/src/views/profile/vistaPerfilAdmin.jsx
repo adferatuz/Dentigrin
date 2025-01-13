@@ -26,7 +26,7 @@ export default function VistaPerfilAdmin (){
                 user.rol === 'admin' ? 
                     location.pathname === `/perfil/admin/${idAdmin}` ? (
                         <div className='container--account'>
-                            <FormPerfilAdmin idAdmin ={idAdmin} />
+                            <FormPerfilAdmin admin ={user} />
                         </div>
                     ):
                     location.pathname === `/perfil/admin/${idAdmin}/agendamiento-citas-admin` ? (

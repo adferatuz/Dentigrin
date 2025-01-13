@@ -6,51 +6,58 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import {INITIAL_EVENTS, createEventId } from '../../utils/event-utils'
 import './styles.css'
+import apiService from '../../services/apiService'
+import { formattedDate, formattedTime } from '../../utils/formattedDateTime'
 
 export default function Calendar(){
   const [weekendsVisible, setWeekendsVisible] = useState(true)
   const [currentEvents, setCurrentEvents] = useState([])
 
-  useEffect(() => {},[])
-
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible)
   }
 
-  async function saveEventsToDataBase(events){
-
-  } 
-
-  function handleDateSelect(selectInfo) {
+  async function handleDateSelect(selectInfo) {
     let title = prompt('Por favor ingrese el motivo del evento')
-    let especializacion = prompt('Por favor ingrese una de la siguientes especializaciones: PERIODONCIA, PROSTODONCIA, ODONTOLOGIA ESTETICA, ENDODONCIA');
-
     let calendarApi = selectInfo.view.calendar
+    if(title){
+      let especializacion = prompt('Por favor ingrese una de la siguientes especializaciones: PERIODONCIA, PROSTODONCIA, ODONTOLOGIA ESTETICA, ENDODONCIA');
+      let servicio = prompt('Por favor ingrese una de los siguientes servicios: CONSULTA, HIGIENE ORAL, RESINAS, ENDODONCIA, EXTRACCIÓN;');  
+  
+      let id = createEventId();
+  
+      if (title) {
+        calendarApi.addEvent({
+          id: id,
+          title,
+          start: selectInfo.startStr,
+          end: selectInfo.endStr,
+          allDay: selectInfo.allDay
+        })
+      }
+  
+      const horaConcatenada = `${formattedTime(selectInfo.startStr)} - ${formattedTime(selectInfo.endStr)}`
+  
+      const data = {
+        fechaConsulta: formattedDate(selectInfo.startStr),
+        horaConsulta: horaConcatenada,
+        motivo: title,
+        servicio: servicio,
+        especializacion: especializacion
+      }
 
-    calendarApi.unselect() // clear date selection
-    let id = createEventId();
-
-    if (title) {
-      calendarApi.addEvent({
-        id: id,
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      })
-
-      console.log(`
-        Este es el valor de id: ${id}, 
-        Este es el valor de start: ${selectInfo.startStr},
-        Este es el valor de title: ${title},
-        Este es el valor de end: ${selectInfo.endStr},
-        Este es el valor de allDay: ${selectInfo.allDay}
-        Este es el valor de especializacion: ${especializacion}`)
+      const response = await apiService.post('registrar-cita-medica', data)
+      if (response) {
+        alert(' Cita registrada con exito en el cronograma.')
+      }else{
+        alert('Error al registrar la cita')
+      }
     }
+    calendarApi.unselect() // clear date selection
   }
 
   function handleEventClick(clickInfo) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    if (confirm(`Estas seguro de querer borrar el evento '${clickInfo.event.title}'`)) {
       clickInfo.event.remove()
       console.log('Aqui se envia la peticion para eliminar eventos de la base de datos')
     }

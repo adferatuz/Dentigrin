@@ -1,5 +1,5 @@
 import { createContext, useContext, useState} from "react";
-import {usuarios} from '../../datosPruebaJson/usuariosJson.js'
+import apiService from "../../services/apiService.js";
 
 const AuthContext = createContext()
 
@@ -9,11 +9,11 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [user, setUser] = useState(null)
 
-     const login = (formValues) => {
+     const login = async (formValues) => {
         if(formValues){
-            const userInformation = usuarios.find(usuario => usuario.email === formValues.email)
+            const userInformation = await apiService.post('login', formValues);
             if (userInformation) {
-                setUser(userInformation);
+                setUser(userInformation.user);
                 setIsAuthenticated(true);
                 localStorage.setItem('isAuthenticated', 'true')
             } else {
