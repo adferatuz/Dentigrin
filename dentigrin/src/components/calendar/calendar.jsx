@@ -17,6 +17,28 @@ export default function Calendar(){
     setWeekendsVisible(!weekendsVisible)
   }
 
+  async function searchDentist(value) {
+    let dentistEspecialty;
+    let service;
+
+    switch (true) {
+      case value === 'PERIODONCIA' || value === 'PROSTODONCIA' ||
+        value === 'ODONTOLOGIA ESTETICA' || value === 'ENDODONCIA':
+        dentistEspecialty = await apiService.post('dentist-especialty', value)
+        if (!dentistEspecialty) {
+          alert('No ahi odontologos disponibles para la especialidad seleccionada')
+          break;
+        } 
+        console.log('si entro a la funcion de busqueda de odontologos')
+        return dentistEspecialty
+      case value === 'CONSULTA' || value === 'HIGIENE ORAL' ||
+        value === 'RESINAS' || value === 'ENDODONCIA' || value === 'EXTRACCIÓN':
+        break;
+      default:
+        alert('Especialidad no valida')
+    }
+  }
+
   async function handleDateSelect(selectInfo) {
     let title = prompt('Por favor ingrese el motivo del evento')
     let calendarApi = selectInfo.view.calendar
@@ -35,6 +57,9 @@ export default function Calendar(){
           allDay: selectInfo.allDay
         })
       }
+
+      //Aqui se hace la funcion encargada de verificar los datos de especializacion y servicio
+      searchDentist(especializacion)
   
       const horaConcatenada = `${formattedTime(selectInfo.startStr)} - ${formattedTime(selectInfo.endStr)}`
   

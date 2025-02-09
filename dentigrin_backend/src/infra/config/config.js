@@ -9,7 +9,7 @@ const config = {
             ]
 
             if(ACCEPTED_ORIGINS.includes(origin)){
-                return callback(null, true)
+                return callback(null, 'http://localhost:5173')
             }
 
             if(!origin){

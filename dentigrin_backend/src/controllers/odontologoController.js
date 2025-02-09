@@ -71,6 +71,31 @@ exports.getOdontologoById = async (req, res) => {
   }
 }
 
+// Obtener Odontologo por especialidad
+exports.getEspecialty = async (req, res) => {
+  try {
+
+    // obtener el usuario autorizado para esta accion
+    const { user } = req.session;
+    //Validar que el usuario tenga permisos para realizar esta accion
+    if (!user) return res.status(403).send('Acceso no autorizado');
+
+    //Llamado al servicio para obtener un odontologo por especialidad
+    const odontologo = await odontologoService.getEspecialty(req.body.especialidad);
+
+    // Respuesta al lado del cliente
+    if(odontologo){
+      res.status(200).json(odontologo);
+    } else{
+      res.status(204).json({ message: 'No se encontro el odontologo' });
+    }
+    
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+    
+  }
+}
+
 //Actualizar  un odontologo
 exports.updateOdontologo  = async (req, res) => {
   try {

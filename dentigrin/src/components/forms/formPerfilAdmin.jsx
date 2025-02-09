@@ -13,6 +13,7 @@ const FormPerfilAdmin = ({admin}) =>{
         if (response) {
             setUserAdmin(response)
         }
+        console.log(response)
     }
 
      useEffect(() => {

@@ -13,7 +13,7 @@ const apiService = {
                 headers, 
                 credentials: 'include' 
             });
-            if (!response.ok) throw new Error(`Error: ${response.status}`);
+            if (!response.ok) throw new Error(`Error: Aqui es status ${response.status}`);
             return await response.json();
         } catch (error) {
             console.error('GET error:', error);
