@@ -45,7 +45,7 @@ exports.getEspecialty = async (data) => {
         return await odontologoRepository.getEspecialty(data);
         
     } catch (error) {
-        throw new Error("Error al obtener el odontólogo por especialidad");        
+                
     }
 }
 

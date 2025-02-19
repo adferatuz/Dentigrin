@@ -81,13 +81,13 @@ exports.getEspecialty = async (req, res) => {
     if (!user) return res.status(403).send('Acceso no autorizado');
 
     //Llamado al servicio para obtener un odontologo por especialidad
-    const odontologo = await odontologoService.getEspecialty(req.body.especialidad);
+    const odontologo = await odontologoService.getEspecialty(req.body);
 
     // Respuesta al lado del cliente
     if(odontologo){
       res.status(200).json(odontologo);
     } else{
-      res.status(204).json({ message: 'No se encontro el odontologo' });
+      res.status(404).json({ message: 'No se encontro el odontologo' });
     }
     
   } catch (error) {

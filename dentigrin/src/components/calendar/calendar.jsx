@@ -20,16 +20,23 @@ export default function Calendar(){
   async function searchDentist(value) {
     let dentistEspecialty;
     let service;
+    const data1 = {
+      especializacion: value
+    }
+    const data2 = {
+      servicio: value
+    }
 
     switch (true) {
       case value === 'PERIODONCIA' || value === 'PROSTODONCIA' ||
         value === 'ODONTOLOGIA ESTETICA' || value === 'ENDODONCIA':
-        dentistEspecialty = await apiService.post('dentist-especialty', value)
+        dentistEspecialty = await apiService.post('dentist-especialty', data1)
         if (!dentistEspecialty) {
           alert('No ahi odontologos disponibles para la especialidad seleccionada')
           break;
         } 
         console.log('si entro a la funcion de busqueda de odontologos')
+        console.log(dentistEspecialty)
         return dentistEspecialty
       case value === 'CONSULTA' || value === 'HIGIENE ORAL' ||
         value === 'RESINAS' || value === 'ENDODONCIA' || value === 'EXTRACCIÓN':
