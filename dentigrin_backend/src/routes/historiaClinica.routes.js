@@ -4,6 +4,9 @@ const historiaClinicaController = require('@controllers/historiaClinicaControlle
 
 
 //Definir ruta obtener historias clinicas
-router.get('/historias-clinicas', historiaClinicaController.getHistoriaClinica);
+router.post('/historias-clinica/id-paciente', historiaClinicaController.getHistoriaClinicaByIdPaciente);
+router.post('/historia-clinica', historiaClinicaController.createHistoriaClinica);
+router.put('/historia-clinica', historiaClinicaController.updateHistoriaClinica);
+router.delete('/historia-clinica', historiaClinicaController.deleteHistoriaClinica);
 
 module.exports = router;

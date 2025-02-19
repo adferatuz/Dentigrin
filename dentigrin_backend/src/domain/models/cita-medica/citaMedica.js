@@ -6,9 +6,9 @@ const Odontologo = require('@models/odontologo/odontologo')
 const Cita = sequelize.define('citas', 
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true,
+            defaultValue:  DataTypes.UUIDV4,
             comment: 'Este es un nombre de columna que contiene la llave primaria'
         },
         horaConsulta: {
@@ -29,8 +29,25 @@ const Cita = sequelize.define('citas',
             field: 'motivo',
             comment: 'Este es un nombre de columna que contiene el motivo'
         },
+        servicio: {
+            type:DataTypes.ENUM,
+            values: ['CONSULTA', 'HIGIENE ORAL', 'RESINAS', 'ENDODONCIA', 'EXTRACCIÓN'],
+            allowNull: false,
+            field: 'servicio',
+            comment: 'Este es un nombre de columna que contiene el servicio',
+            validate: {
+                isIn: [['CONSULTA', 'HIGIENE ORAL', 'RESINAS', 'ENDODONCIA', 'EXTRACCIÓN']], // Validación adicional
+              },
+        },
+        nombreOdontologo: {
+            type:DataTypes.STRING,
+            allowNull: false,
+            field: 'nombre_odontologo',
+            comment: 'Este es un nombre de columna que contiene el nombre del odontologo'
+        },
         estado: {
             type:DataTypes.BOOLEAN,
+            defaultValue: true,
             allowNull: false,
             field: 'estado',
             comment: 'Este es un nombre de columna que contiene el estado'

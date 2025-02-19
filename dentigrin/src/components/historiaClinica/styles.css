@@ -5,6 +5,35 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 0.5fr 0.5fr 1fr 1fr 0.5fr;
     gap: 8px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    /* ancho del scrollbar vertical */
+    height: 12px;
+    /* altura del scrollbar horizontal */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* color de fondo del track */
+    border-radius: 10px;
+    /* bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* color del scroll */
+    border-radius: 10px;
+    /* bordes redondeados */
+    border: 3px solid #f1f1f1;
+    /* espacio entre el thumb y el track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* cambia de color al pasar el cursor */
 }
 
 .form-historia-clinica h2{
@@ -20,7 +49,7 @@
     gap: 10px; /* Espacio entre cada par label-input */
 }
 
-.div2 input{
+.div2 input,select{
     width: 50%;
     padding: 5px; /* Espacio interior en el input */
     box-sizing: border-box;
@@ -56,4 +85,26 @@
     justify-content: flex-end; /* Centra los botones horizontalmente */
     align-items: flex-start; /* Centra los botones verticalmente */
     gap: 5px; /* Espacio entre los botones */ 
+}
+
+.group-input-button{
+    position: relative;
+    width: 100%;
+}
+
+.btn-group-input{
+    position: absolute;
+    right: 50%;
+    top: 40%;
+    transform: translateY(10px);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#numero_identificacion{
+    padding-right: 20px;
+}
+#imgSearch {
+    filter: brightness(0.5);
 }

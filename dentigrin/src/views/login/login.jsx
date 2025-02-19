@@ -10,12 +10,13 @@ export default function Login() {
     const { state } = useLocation()
 
     const handleSesionClick = (formValues) => {
+        //console.log(`Este es el valor del formulario de login: ${ JSON.stringify(formValues)}`)
         login(formValues)
     }
 
     useEffect(() => {
         if (user) {
-            console.log('Este es el valor de user: ', user);
+            //console.log('Este es el valor de user: ', user);
             if(user.rol === 'paciente'){
                 navigate(state?.location?.pathname ?? `/perfil/${user.id_usuario}`);
                 

@@ -1,61 +1,62 @@
-const Odontologo = require('@models/odontologo/odontologo');
+const odontologoRepository = require('@repository/odontologoRepository');
 
-//Servicio para  obtener los odontólogos
+// Servicio para  obtener los odontólogos
 exports.getOdontologos  = async () => {
     try {
-        const odontologos = await Odontologo.findAll();
-        return odontologos;
-        
+
+        // Obtener los odontólogos
+        return await odontologoRepository.getAllOdontologos();
+
     } catch (error) {
-        throw new Error("Error al obtener los odontólogos");        
+        throw new Error("Error al obtener los odontólogos");
     }
 }
 
+// Servicio para crear un registro de odontólogo
 exports.createOdontologo  = async (data) => {
     try {
-        const nuevoOdontologo = await Odontologo.create(data);
-        return nuevoOdontologo;
+
+        // Llamado al repositorio  para crear un odontólogo
+        return await odontologoRepository.createOdontologo(data);        
 
     } catch (error) {
         throw new Error("Error al crear el odontólogo");        
     }
 }
 
+// Servicio  para obtener un odontólogo por id
 exports.getOdontologoById   = async (id) => {
     try {
-        const odontologo = await Odontologo.findByPk(id);
-        return odontologo;
+
+        //  Obtener el odontólogo por id
+        return await odontologoRepository.getOdontologo(id);
+        
         
     } catch (error) {
         throw new Error("Error al obtener el odontólogo");        
     }
 }
 
+// Servicio para actualizar un odontólogo
 exports.updateOdontologo   = async (data,id ) => {
     try {
-        const [updated] = await Odontologo.update(data, {
-            where: { id: id }
-          });
-        return updated;
+
+        // Llamado al repositorio para  actualizar el odontólogo
+        return await  odontologoRepository.updateOdontologo(data,id);
         
     } catch (error) {
         throw new Error("Error al actualizar el odontólogo");        
     }
 }
 
+// Servicio para eliminar un odontólogo
 exports.deleteOdontologo = async (id) => {
     try {
-        const odontologo = await Odontologo.destroy({
-            where: { id: id }
-        });
-        return odontologo;
+        
+        //  Llamado al repositorio para eliminar el odontólogo
+        return await  odontologoRepository.deleteOdontologo(id);
         
     } catch (error) {
         throw new Error("Error al eliminar el odontólogo");        
     }
 }
-
-
-
-
-

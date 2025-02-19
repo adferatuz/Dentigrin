@@ -2,6 +2,7 @@ require('module-alias/register');
 
 const sequelize = require('@config/db');
 const app = require('./app.js')
+const { PORT } = require('@config/config.js');
 
 sequelize.authenticate()
   .then(() => {
@@ -9,8 +10,8 @@ sequelize.authenticate()
     return sequelize.sync(/*{force: true}*/);
   })
   .then(() => {
-    app.listen(3000, () => {
-      console.log('Servidor escuchando en el puerto 3000');
+    app.listen(PORT, () => {
+      console.log(`Servidor escuchando en el puerto ${PORT}`);
     });
   })
   .catch(err => {

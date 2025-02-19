@@ -1,25 +1,45 @@
 import Button from '../button/button'
 import './styles.css'
 import imgEdit from '../../assets/icons/editar-texto.png'
+import imgSearch from '../../assets/icons/lupa.png'
 
 const HistoriaClinica = () => {
     return (
         <form className='form-historia-clinica' action="">
             <h2>Hisroria Clinica del Paciente</h2>
-            <div className='div2'>
+            <div
+             className='div2'>
+
+                <label htmlFor="tipo_identificacion" title='Tipo de identificacion'>Tipo de identificación</label>
+                <select>
+                    <option>Selecciona tipo de identificación</option>
+                    <option value="1">Cédula</option>
+                    <option value="2">Tarjeta de Identidad</option>
+                </select>
+
+                <div className="div2 group-input-button">
+                    <label htmlFor="numero_identificacion" title='Numero de identificación'>Numero de identificación</label>
+                    <input
+                        type="text"
+                        id='numero_identificacion'
+                        name='numero_identificacion'
+                        autoComplete='Tipo de identificacion' />
+
+                    <button 
+                        className='btn-group-input'
+                        title='Buscar'>
+                            <div className="icon">
+                            <img id='imgSearch' src={imgSearch} alt="Buscar" />
+                            </div>
+                        </button>
+                </div>
+
                 <label htmlFor="nombre" title='Nombre Paciente'>Nombre Paciente</label>
                 <input 
                     type="text"
                     id='nombre'
                     name='nombre'
                     autoComplete='nombre' />
-
-                <label htmlFor="id_Paciente" title='Id Paciente'>Id Paciente</label>
-                <input 
-                    type="text"
-                    id='id_Paciente'
-                    name='id_Paciente'
-                    autoComplete='id Paciente' />
 
             </div>
 
@@ -44,7 +64,7 @@ const HistoriaClinica = () => {
             </div>
 
             <div className='div5'>
-                <Button provideClass={'button-edit btn-dimensions'} textContent={'Actualizar'}/>
+                <Button provideClass={'button-edit btn-dimensions'} textContent={'Buscar registros'}/>
                 <Button provideClass={'button-ok btn-dimensions'} textContent={'Guardar'}/>
             </div>
         </form>

@@ -1,11 +1,13 @@
 const { DataTypes} = require('sequelize');
 const sequelize = require('@config/db');
+const bcrypt =  require('bcrypt');
+const {SALT_ROUNDS} = require('@config/config')
 
 const Usuario = sequelize.define('usuarios', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true,
+            defaultValue:  DataTypes.UUIDV4,
             field: 'id_usuario',
             comment: 'Este es un nombre de columna que contiene la llave primaria'
         },
@@ -39,6 +41,14 @@ const Usuario = sequelize.define('usuarios', {
         timestamps: true,
         createdAt: 'fecha_creacion',
         updatedAt: 'fecha_actualizacion',
+        hooks:{
+            // Hook para encriptar la contraseña antes de crear o actualizar el usuario
+            beforeSave: async (usuario) => {
+                if(usuario.password){
+                    usuario.password = await bcrypt.hash(usuario.password, SALT_ROUNDS);
+                }
+            }
+        }
     }
 );
 

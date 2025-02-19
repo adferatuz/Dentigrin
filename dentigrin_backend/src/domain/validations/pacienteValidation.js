@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const pacienteSchema = Joi.object({
-  id_usuario: Joi.number().integer()/*.required()*/,
+  id_usuario: Joi.string()/*.required()*/,
   nombre: Joi.string()/*.required()*/,
   apellido: Joi.string()/*.required()*/,
   tipoIdentificacion: Joi.string()/*.required()*/,
@@ -17,7 +17,7 @@ const pacienteSchema = Joi.object({
   direccionResidencia: Joi.string()/*.required()*/,
 });
 
-const idPacienteSchema = Joi.number().integer().required();
+const idPacienteSchema = Joi.string().required();
 
 exports.validatePaciente = (data) => pacienteSchema.validate(data);
 exports.validatePacienteId = (id) => idPacienteSchema.validate(id);

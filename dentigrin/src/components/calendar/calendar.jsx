@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { formatDate } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -6,35 +6,60 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import {INITIAL_EVENTS, createEventId } from '../../utils/event-utils'
 import './styles.css'
+import apiService from '../../services/apiService'
+import { formattedDate, formattedTime } from '../../utils/formattedDateTime'
 
 export default function Calendar(){
-    const [weekendsVisible, setWeekendsVisible] = useState(true)
+  const [weekendsVisible, setWeekendsVisible] = useState(true)
   const [currentEvents, setCurrentEvents] = useState([])
 
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible)
   }
 
-  function handleDateSelect(selectInfo) {
-    let title = prompt('Please enter a new title for your event')
+  async function handleDateSelect(selectInfo) {
+    let title = prompt('Por favor ingrese el motivo del evento')
     let calendarApi = selectInfo.view.calendar
+    if(title){
+      let especializacion = prompt('Por favor ingrese una de la siguientes especializaciones: PERIODONCIA, PROSTODONCIA, ODONTOLOGIA ESTETICA, ENDODONCIA');
+      let servicio = prompt('Por favor ingrese una de los siguientes servicios: CONSULTA, HIGIENE ORAL, RESINAS, ENDODONCIA, EXTRACCIÓN;');  
+  
+      let id = createEventId();
+  
+      if (title) {
+        calendarApi.addEvent({
+          id: id,
+          title,
+          start: selectInfo.startStr,
+          end: selectInfo.endStr,
+          allDay: selectInfo.allDay
+        })
+      }
+  
+      const horaConcatenada = `${formattedTime(selectInfo.startStr)} - ${formattedTime(selectInfo.endStr)}`
+  
+      const data = {
+        fechaConsulta: formattedDate(selectInfo.startStr),
+        horaConsulta: horaConcatenada,
+        motivo: title,
+        servicio: servicio,
+        especializacion: especializacion
+      }
 
-    calendarApi.unselect() // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      })
+      const response = await apiService.post('registrar-cita-medica', data)
+      if (response) {
+        alert(' Cita registrada con exito en el cronograma.')
+      }else{
+        alert('Error al registrar la cita')
+      }
     }
+    calendarApi.unselect() // clear date selection
   }
 
   function handleEventClick(clickInfo) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    if (confirm(`Estas seguro de querer borrar el evento '${clickInfo.event.title}'`)) {
       clickInfo.event.remove()
+      console.log('Aqui se envia la peticion para eliminar eventos de la base de datos')
     }
   }
 
@@ -58,7 +83,7 @@ export default function Calendar(){
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
           }}
           initialView='dayGridMonth'
-          editable={true}
+          editable={false}/*Aqui se pueden editar para arrastrar y soltar los eventos*/
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
@@ -68,11 +93,11 @@ export default function Calendar(){
           eventContent={renderEventContent} // custom render function
           eventClick={handleEventClick}
           eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-          /* you can update a remote database when these fire:
-          eventAdd={function(){}}
-          eventChange={function(){}}
-          eventRemove={function(){}}
-          */
+        /* you can update a remote database when these fire:
+        eventAdd={function(){}}
+        eventChange={function(){}}
+        eventRemove={function(){}}
+        */
         />
       </div>
     </div>
