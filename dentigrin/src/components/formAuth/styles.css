@@ -61,7 +61,7 @@
     display: flex;
     width: 100%;
     position: relative;
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
 .body-form form div p{    
@@ -72,23 +72,9 @@
     color: #0f54e8;
 }
 
-.container-link-login-wrapper {
-    display: flex;
-    align-items: center; 
-    gap: 2px; 
-}
-
-.container-link-login {
-    display: flex;
-    flex-direction: column; 
-    text-align: justify; 
-    gap: 0px;
-    
-}
-
 .container-link-login p:first-child{
     pointer-events: none;
-    height: 5px;
+    margin-right: 8px;
 }
 
 .container-link-login p:first-child:hover{
@@ -97,11 +83,5 @@
 
 .btn--position{
     position: absolute;
-    left: 70%;
-}
-
-.btn-dimensions1 {
-    font-size: 14px;
-    padding: 7px 20px;
-    margin-right: 2px;
+    left: 68%;
 }

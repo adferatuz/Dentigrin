@@ -76,7 +76,7 @@ export default function FormAuth ({handleSesionClick,showLink, title}) {
                             placeholder='Ingrese la contraseña'
                             required 
                         />
-                        <div className='container-link-login-wrapper'>
+                        <div>
                             {
                                 isActive ? 
                                     <p>¿Olvidaste tu contraseña?</p> 
@@ -88,8 +88,8 @@ export default function FormAuth ({handleSesionClick,showLink, title}) {
                             }
                             
                             <Button 
-                                provideClass={'button-ok btn--position btn-dimensions1'} 
-                                textContent={isActive ? 'Iniciar sesión' : 'Registrarme'}
+                                provideClass={'button-ok btn--position'} 
+                                textContent={'Enviar'}
                                 type={'submit'} />
                         </div>
                     </form>
