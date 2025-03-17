@@ -1,7 +1,24 @@
 export  const handleResponse = async (response) => {
     if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`Error: ${response.status} - ${errorText}`);
+        let errorMessage = errorText;
+        try {
+            const errorJson = JSON.parse(errorText);
+            errorMessage = errorJson.message || errorText;
+        } catch (e) {
+            console.error('Error parsing JSON:', e);
+        }
+
+        return{
+            success: false,
+            status: response.status,
+            statusText: response.statusText,
+            error: errorMessage
+        }
     }
-    return await response.json();
+    const data = await response.json();
+    return {
+        success: true,
+        data
+    };
 };

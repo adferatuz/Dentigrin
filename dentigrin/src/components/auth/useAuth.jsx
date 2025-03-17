@@ -12,8 +12,8 @@ export const AuthProvider = ({ children }) => {
      const login = async (formValues) => {
         if(formValues){
             const userInformation = await apiService.post('login', formValues);
-            if (userInformation) {
-                setUser(userInformation.user);
+            if (userInformation.success) {
+                setUser(userInformation.data.user);
                 setIsAuthenticated(true);
                 localStorage.setItem('isAuthenticated', 'true')
             } else {

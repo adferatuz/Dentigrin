@@ -5,9 +5,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import {INITIAL_EVENTS, createEventId } from '../../utils/event-utils'
-import './styles.css'
-import apiService from '../../services/apiService'
 import { formattedDate, formattedTime } from '../../utils/formattedDateTime'
+import { searchDentist, scheduleAppointment, loadEvents } from '../../utils/functionsCalendar'
+import './styles.css'
 
 export default function Calendar(){
   const [weekendsVisible, setWeekendsVisible] = useState(true)
@@ -17,34 +17,23 @@ export default function Calendar(){
     setWeekendsVisible(!weekendsVisible)
   }
 
-  async function searchDentist(value) {
-    let dentistEspecialty;
-    let service;
-    const data1 = {
-      especializacion: value
-    }
-    const data2 = {
-      servicio: value
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const result = await loadEvents();
+        console.log(result.data)
+        if (result.success) {
+          setCurrentEvents(result.data);
+        } else {
+          console.error('Error fetching events:', result);
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
     }
 
-    switch (true) {
-      case value === 'PERIODONCIA' || value === 'PROSTODONCIA' ||
-        value === 'ODONTOLOGIA ESTETICA' || value === 'ENDODONCIA':
-        dentistEspecialty = await apiService.post('dentist-especialty', data1)
-        if (!dentistEspecialty) {
-          alert('No ahi odontologos disponibles para la especialidad seleccionada')
-          break;
-        } 
-        console.log('si entro a la funcion de busqueda de odontologos')
-        console.log(dentistEspecialty)
-        return dentistEspecialty
-      case value === 'CONSULTA' || value === 'HIGIENE ORAL' ||
-        value === 'RESINAS' || value === 'ENDODONCIA' || value === 'EXTRACCIÓN':
-        break;
-      default:
-        alert('Especialidad no valida')
-    }
-  }
+    fetchEvents();
+  }, []);
 
   async function handleDateSelect(selectInfo) {
     let title = prompt('Por favor ingrese el motivo del evento')
@@ -66,7 +55,8 @@ export default function Calendar(){
       }
 
       //Aqui se hace la funcion encargada de verificar los datos de especializacion y servicio
-      searchDentist(especializacion)
+      const dentistEspecialty = searchDentist(especializacion)
+      const serviceEspecialty = searchDentist(servicio)
   
       const horaConcatenada = `${formattedTime(selectInfo.startStr)} - ${formattedTime(selectInfo.endStr)}`
   
@@ -78,14 +68,9 @@ export default function Calendar(){
         especializacion: especializacion
       }
 
-      const response = await apiService.post('registrar-cita-medica', data)
-      if (response) {
-        alert(' Cita registrada con exito en el cronograma.')
-      }else{
-        alert('Error al registrar la cita')
-      }
+      scheduleAppointment(data, dentistEspecialty, serviceEspecialty)
+      calendarApi.unselect() // clear date selection   
     }
-    calendarApi.unselect() // clear date selection
   }
 
   function handleEventClick(clickInfo) {

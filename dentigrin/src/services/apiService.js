@@ -62,6 +62,19 @@ const apiService = {
             console.error('DELETE error:', error);
             throw error;
         }
+    },
+    getEvents: async (endpoint) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+                method: 'GET',
+                headers,
+                credentials: 'include'
+            });
+            return await handleResponse(response);
+        } catch (error) {
+            console.error('GET events error:', error);
+            throw error;
+        }
     }
 };
 
