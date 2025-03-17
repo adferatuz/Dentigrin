@@ -10,10 +10,9 @@ const FormPerfilAdmin = ({admin}) =>{
 
     async function fetchData() {
         const response = await apiService.get(`admin/${admin.id_usuario}`)
-        if (response) {
-            setUserAdmin(response)
+        if (response.success) {
+            setUserAdmin(response.data)
         }
-        console.log(response)
     }
 
      useEffect(() => {
