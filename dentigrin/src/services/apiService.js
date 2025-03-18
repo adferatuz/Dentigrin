@@ -1,3 +1,5 @@
+import { handleResponse } from "./handeErrors";
+
 // url dominio de el servidor
 const API_BASE_URL = 'http://localhost:3000/'; // URL base de tu API
 
@@ -13,8 +15,7 @@ const apiService = {
                 headers, 
                 credentials: 'include' 
             });
-            if (!response.ok) throw new Error(`Error: ${response.status}`);
-            return await response.json();
+            return await handleResponse(response);
         } catch (error) {
             console.error('GET error:', error);
             throw error;
@@ -28,8 +29,7 @@ const apiService = {
                 credentials : 'include',
                 body: JSON.stringify(data)
             });
-            if (!response.ok) throw new Error(alert(`Error: ${response.status}`));
-            return await response.json();
+            return await handleResponse(response);
         } catch (error) {
             console.error('POST error:', error);
             throw error;
@@ -44,8 +44,7 @@ const apiService = {
                 credentials : 'include',
                 body: JSON.stringify(data)
             });
-            if (!response.ok) throw new Error(`Error: ${response.status}`);
-            return await response.json();
+            return await handleResponse(response);
         } catch (error) {
             console.error('PUT error:', error);
             throw error;
@@ -58,10 +57,22 @@ const apiService = {
                 headers,
                 credentials : 'include',
             });
-            if (!response.ok) throw new Error(`Error: ${response.status}`);
-            return await response.json();
+            return await handleResponse(response);
         } catch (error) {
             console.error('DELETE error:', error);
+            throw error;
+        }
+    },
+    getEvents: async (endpoint) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+                method: 'GET',
+                headers,
+                credentials: 'include'
+            });
+            return await handleResponse(response);
+        } catch (error) {
+            console.error('GET events error:', error);
             throw error;
         }
     }

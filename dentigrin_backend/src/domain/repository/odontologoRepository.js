@@ -36,6 +36,16 @@ class OdontologoRepository {
 
     }
 
+    // Obtener odontologo por esppecialidad
+    static async getEspecialty(data) {
+        console.log(data)
+        return await Odontologo.findOne({
+            where: {
+                especializacion: data.especializacion
+            }
+        })
+    }
+
     // Actualizar un odontólogo
     static async updateOdontologo(data,id){
 

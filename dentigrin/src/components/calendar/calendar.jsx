@@ -5,9 +5,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import {INITIAL_EVENTS, createEventId } from '../../utils/event-utils'
-import './styles.css'
-import apiService from '../../services/apiService'
 import { formattedDate, formattedTime } from '../../utils/formattedDateTime'
+import { searchDentist, scheduleAppointment, loadEvents } from '../../utils/functionsCalendar'
+import './styles.css'
 
 export default function Calendar(){
   const [weekendsVisible, setWeekendsVisible] = useState(true)
@@ -16,6 +16,24 @@ export default function Calendar(){
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible)
   }
+
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const result = await loadEvents();
+        console.log(result.data)
+        if (result.success) {
+          setCurrentEvents(result.data);
+        } else {
+          console.error('Error fetching events:', result);
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    }
+
+    fetchEvents();
+  }, []);
 
   async function handleDateSelect(selectInfo) {
     let title = prompt('Por favor ingrese el motivo del evento')
@@ -35,6 +53,10 @@ export default function Calendar(){
           allDay: selectInfo.allDay
         })
       }
+
+      //Aqui se hace la funcion encargada de verificar los datos de especializacion y servicio
+      const dentistEspecialty = searchDentist(especializacion)
+      const serviceEspecialty = searchDentist(servicio)
   
       const horaConcatenada = `${formattedTime(selectInfo.startStr)} - ${formattedTime(selectInfo.endStr)}`
   
@@ -46,14 +68,9 @@ export default function Calendar(){
         especializacion: especializacion
       }
 
-      const response = await apiService.post('registrar-cita-medica', data)
-      if (response) {
-        alert(' Cita registrada con exito en el cronograma.')
-      }else{
-        alert('Error al registrar la cita')
-      }
+      scheduleAppointment(data, dentistEspecialty, serviceEspecialty)
+      calendarApi.unselect() // clear date selection   
     }
-    calendarApi.unselect() // clear date selection
   }
 
   function handleEventClick(clickInfo) {

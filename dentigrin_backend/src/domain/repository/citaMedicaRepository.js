@@ -17,6 +17,7 @@ class CitaMedicaRepository {
     //Metodo para crear un registro de cita odontologica en  la base de datos.
     static async programarCita(data) {
 
+        //Serializacion de datos que llegan del lado del cliente
         const datosCitaMedica = {
             fechaConsulta:  data.fechaConsulta,
             horaConsulta: data.horaConsulta,
@@ -36,6 +37,10 @@ class CitaMedicaRepository {
                 especializacion: data.especializacion
             }
         });
+
+        if(!odontologo){
+            throw new Error("El odontologo no existe en la base de datos");
+        }
 
         const nombreOdontologo = `${odontologo.nombre} ${odontologo.apellido}`;
 

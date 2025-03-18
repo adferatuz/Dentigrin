@@ -37,6 +37,18 @@ exports.getOdontologoById   = async (id) => {
     }
 }
 
+// Servicio para obtener un odontólogo por especialidad
+exports.getEspecialty = async (data) => {
+    try {
+        
+        // Llamado al repositorio para obtener un odontólogo por especialidad
+        return await odontologoRepository.getEspecialty(data);
+        
+    } catch (error) {
+                
+    }
+}
+
 // Servicio para actualizar un odontólogo
 exports.updateOdontologo   = async (data,id ) => {
     try {

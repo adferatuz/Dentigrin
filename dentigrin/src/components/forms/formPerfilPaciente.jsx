@@ -8,8 +8,8 @@ export default function FormPerfilPaciente ({title}) {
                 <h2>Perfil {title}</h2>
                 <div className="form-group">
                     
-                    <label>Nombre de usuario</label>
-                    <input type="text" placeholder="Ingresa tu nombre de usuario" />
+                    <label htmlFor='nombreUsuario'>Nombre de usuario</label>
+                    <input id='nombreUsuario' name='nombreUsuario' type="text" placeholder="Ingresa tu nombre de usuario" />
                 
                     <label>Contraseña</label>
                     <input type="password" placeholder="Ingresa tu contraseña" />

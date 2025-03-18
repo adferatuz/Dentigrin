@@ -128,4 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-config.json
+config.jsonpnpm-lock.yaml
+dentigrin/pnpm-lock.yaml
+dentigrin_backend/pnpm-lock.yaml
